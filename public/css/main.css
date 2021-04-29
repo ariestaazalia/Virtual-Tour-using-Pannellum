@@ -1,0 +1,1333 @@
+/* =================================================================== 
+ *
+ *  Infinity v1.0 Main Stylesheet
+ *  01-02-2017
+ *  ------------------------------------------------------------------
+ *
+ *  TOC:
+ *  01. webfonts and iconfonts
+ *  02. base style overrides
+ *  03. typography & general theme styles
+ *  04. preloader
+ *  05. forms
+ *  06. buttons
+ *  07. other components
+ *  08. common and reusable styles 
+ *  09. header styles
+ *  10. home
+ *  11. about
+ *  12. services
+ *  13. portfolio
+ *  14. testimonials
+ *  15. clients
+ *  16. contact
+ *  17. footer
+ *
+ * =================================================================== */
+
+
+/* ===================================================================
+ *  01. webfonts and iconfonts - (_document-setup)
+ *
+ * ------------------------------------------------------------------- */
+@import url("font-awesome/css/font-awesome.min.css");
+@import url("micons/micons.css");
+@import url("fonts.css");
+
+
+/* ===================================================================
+ *  02. base style overrides - (_document-setup)
+ *
+ * ------------------------------------------------------------------- */
+html {
+  font-size: 10px;
+}
+@media only screen and (max-width: 1024px) {
+  html {
+    font-size: 9.375px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  html {
+    font-size: 9.375px;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #111111;
+  font-family: "librebaskerville-regular", serif;
+  font-size: 1.6rem;
+  line-height: 3rem;
+  color: #353535;
+  margin: 0;
+  padding: 0;
+}
+
+/* ------------------------------------------------------------------- 
+ * links - (_document-setup) 
+ * ------------------------------------------------------------------- */
+a, a:visited {
+  color: #07617d;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+a:hover, a:focus {
+  color: #000000;
+}
+
+
+/* ===================================================================
+ *  03. typography & general theme styles - (_document-setup.scss) 
+ *
+ * ------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6,
+.h01, .h02, .h03, .h04, .h05, .h06 {
+  font-family: "montserrat-bold", sans-serif;
+  color: #151515;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  margin-bottom: 2.1rem;
+}
+
+h3, .h03, h4, .h04 {
+  margin-bottom: 1.8rem;
+}
+
+h5, .h05, h6, .h06 {
+  margin-bottom: 1.2rem;
+}
+
+h1, .h01 {
+  font-size: 3.1rem;
+  line-height: 1.35;
+  letter-spacing: -.1rem;
+}
+@media only screen and (max-width: 600px) {
+  h1, .h01 {
+    font-size: 2.6rem;
+    letter-spacing: -.07rem;
+  }
+}
+
+h2, .h02 {
+  font-size: 2.4rem;
+  line-height: 1.25;
+}
+
+h3, .h03 {
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+h4, .h04 {
+  font-size: 1.7rem;
+  line-height: 1.76;
+}
+
+h5, .h05 {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+}
+
+h6, .h06 {
+  font-size: 1.3rem;
+  line-height: 1.85;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+}
+
+p img {
+  margin: 0;
+}
+
+p.lead {
+  font-family: "montserrat-regular", sans-serif;
+  font-size: 2rem;
+  line-height: 1.8;
+  color: #4f4f4f;
+  margin-bottom: 3.6rem;
+}
+@media only screen and (max-width: 768px) {
+  p.lead {
+    font-size: 1.8rem;
+  }
+}
+
+em, i, strong, b {
+  font-size: 1.6rem;
+  line-height: 3rem;
+  font-style: normal;
+  font-weight: normal;
+}
+
+em, i {
+  font-family: "librebaskerville-italic", serif;
+}
+
+strong, b {
+  font-family: "librebaskerville-bold", serif;
+}
+
+small {
+  font-size: 1.1rem;
+  line-height: inherit;
+}
+
+abbr {
+  font-family: "librebaskerville-bold", serif;
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: .05rem;
+  color: #4f4f4f;
+}
+
+var, kbd, samp, code, pre {
+  font-family: Consolas, "Andale Mono", Courier, "Courier New", monospace;
+}
+
+pre {
+  padding: 2.4rem 3rem 3rem;
+  background: #F1F1F1;
+}
+
+code {
+  font-size: 1.4rem;
+  margin: 0 .2rem;
+  padding: .3rem .6rem;
+  white-space: nowrap;
+  background: #F1F1F1;
+  border: 1px solid #E1E1E1;
+  border-radius: 3px;
+}
+
+pre > code {
+  display: block;
+  white-space: pre;
+  line-height: 2;
+  padding: 0;
+  margin: 0;
+}
+
+pre.prettyprint > code {
+  border: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+mark {
+  background: #FFF49B;
+  color: #000;
+}
+
+hr {
+  border: solid #d2d2d2;
+  border-width: 1px 0 0;
+  clear: both;
+  margin: 2.4rem 0 1.5rem;
+  height: 0;
+}
+
+/* ------------------------------------------------------------------- 
+ * Lists - (_document-setup.scss)  
+ * ------------------------------------------------------------------- */
+ol {
+  list-style: decimal;
+}
+
+ul {
+  list-style: disc;
+}
+
+li {
+  display: list-item;
+}
+
+ol, ul {
+  margin-left: 1.7rem;
+}
+
+ul li {
+  padding-left: .4rem;
+}
+
+ul ul, ul ol,
+ol ol, ol ul {
+  margin: .6rem 0 .6rem 1.7rem;
+}
+
+ul.disc li {
+  display: list-item;
+  list-style: none;
+  padding: 0 0 0 .8rem;
+  position: relative;
+}
+ul.disc li::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #07617d;
+  position: absolute;
+  left: -17px;
+  top: 11px;
+  vertical-align: middle;
+}
+
+dt {
+  margin: 0;
+  color: #07617d;
+}
+
+dd {
+  margin: 0 0 0 2rem;
+}
+
+/* ------------------------------------------------------------------- 
+ * Spacing - (_document-setup)  
+ * ------------------------------------------------------------------- */
+button, .button {
+  margin-bottom: 1.2rem;
+}
+
+fieldset {
+  margin-bottom: 1.5rem;
+}
+
+/* ------------------------------------------------------------------- 
+ * floated image - (_document-setup)  
+ * ------------------------------------------------------------------- */
+img.pull-right {
+  margin: 1.5rem 0 0 3rem;
+}
+
+img.pull-left {
+  margin: 1.5rem 3rem 0 0;
+}
+
+/* ------------------------------------------------------------------- 
+ * block grids paddings
+ * ------------------------------------------------------------------- */
+.bgrid {
+  padding: 0 20px;
+}
+@media only screen and (max-width: 1024px) {
+  .bgrid {
+    padding: 0 18px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .bgrid {
+    padding: 0 15px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .bgrid {
+    padding: 0 10px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .bgrid {
+    padding: 0;
+  }
+}
+
+
+/* ===================================================================
+ *  04. Preloader
+ *
+ * ------------------------------------------------------------------- */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0F1215;
+  z-index: 800;
+  height: 100%;
+  width: 100%;
+}
+
+.no-js #preloader, .oldie #preloader {
+  display: none;
+}
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  margin-left: -30px;
+  margin-top: -30px;
+  padding: 0;
+  background-color: #f9a828;
+  border-radius: 100%;
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* ===================================================================
+ *  06. buttons - (_button-essentials.scss)
+ *
+ * ------------------------------------------------------------------- */
+.button,
+a.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  font-family: "montserrat-bold", sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: .3rem;
+  height: 5.4rem;
+  line-height: 5.4rem;
+  padding: 0 3rem;
+  margin: 0 .3rem 1.2rem 0;
+  background: #A5A5A5;
+  color: #222222;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  border: none;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover,
+a.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  background: #989898;
+  color: #000000;
+  outline: 0;
+}
+
+.button.button-primary,
+a.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  background: #151515;
+  color: #FFFFFF;
+}
+
+.button.button-primary:hover,
+a.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  background: #030303;
+}
+
+button.full-width, .button.full-width {
+  width: 100%;
+  margin-right: 0;
+}
+
+button.medium, .button.medium {
+  height: 5.7rem !important;
+  line-height: 5.7rem !important;
+  padding: 0 1.8rem !important;
+}
+
+button.large, .button.large {
+  height: 6rem !important;
+  line-height: 6rem !important;
+  padding: 0rem 3rem !important;
+}
+
+button.stroke, .button.stroke {
+  background: transparent !important;
+  border: 3px solid #FFFFFF;
+  line-height: 4.8rem;
+  transition: all 0.3s;
+}
+
+button.stroke.medium, .button.stroke.medium {
+  line-height: 5.1rem !important;
+}
+
+button.stroke.large, .button.stroke.large {
+  line-height: 5.4rem !important;
+}
+
+button.stroke:hover, .button.stroke:hover {
+  border: #f9a828 solid 3px;
+  color: #f9a828;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * skillbars - (_skillbars.scss)
+ * -------------------------------------------------------------------
+ */
+.skill-bars {
+  list-style: none;
+  margin: 6rem 0 3rem;
+}
+.skill-bars li {
+  height: .6rem;
+  background: #a1a1a1;
+  width: 100%;
+  margin-bottom: 6rem;
+  padding: 0;
+  position: relative;
+}
+.skill-bars li strong {
+  position: absolute;
+  left: 0;
+  top: -3rem;
+  font-family: "montserrat-bold", sans-serif;
+  color: #313131;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+}
+.skill-bars li .progress {
+  background: #313131;
+  position: relative;
+  height: 100%;
+}
+.skill-bars li .progress span {
+  position: absolute;
+  right: 0;
+  top: -3.6rem;
+  display: block;
+  font-family: "montserrat-regular", sans-serif;
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1;
+  background: #313131;
+  padding: .6rem .6rem;
+  border-radius: 3px;
+}
+.skill-bars li .progress span::after {
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  margin-left: -5px;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-top: 5px solid #313131;
+  content: "";
+}
+.skill-bars li .percent5 {
+  width: 5%;
+}
+.skill-bars li .percent10 {
+  width: 10%;
+}
+.skill-bars li .percent15 {
+  width: 15%;
+}
+.skill-bars li .percent20 {
+  width: 20%;
+}
+.skill-bars li .percent25 {
+  width: 25%;
+}
+.skill-bars li .percent30 {
+  width: 30%;
+}
+.skill-bars li .percent35 {
+  width: 35%;
+}
+.skill-bars li .percent40 {
+  width: 40%;
+}
+.skill-bars li .percent45 {
+  width: 45%;
+}
+.skill-bars li .percent50 {
+  width: 50%;
+}
+.skill-bars li .percent55 {
+  width: 55%;
+}
+.skill-bars li .percent60 {
+  width: 60%;
+}
+.skill-bars li .percent65 {
+  width: 65%;
+}
+.skill-bars li .percent70 {
+  width: 70%;
+}
+.skill-bars li .percent75 {
+  width: 75%;
+}
+.skill-bars li .percent80 {
+  width: 80%;
+}
+.skill-bars li .percent85 {
+  width: 85%;
+}
+.skill-bars li .percent90 {
+  width: 90%;
+}
+.skill-bars li .percent95 {
+  width: 95%;
+}
+.skill-bars li .percent100 {
+  width: 100%;
+}
+
+/* ===================================================================
+ *  08. common and reusable styles 
+ *
+ * ------------------------------------------------------------------- */
+.section-intro {
+  text-align: center;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.section-intro h1 {
+  font-family: "librebaskerville-bold", serif;
+  font-size: 4.8rem;
+  line-height: 1.375;
+  color: #151515;
+}
+.section-intro h3 {
+  font-family: "montserrat-bold", sans-serif;
+  font-size: 1.8 rem;
+  line-height: 1.667;
+  color: rgba(242, 242, 242, 0.5);
+  text-transform: uppercase;
+  letter-spacing: .3rem;
+  margin-bottom: 1.2rem;
+}
+.section-intro .lead {
+  font-family: "montserrat-regular", sans-serif;
+  font-size: 1.8;
+  line-height: 1.833;
+}
+.section-intro.with-bottom-sep {
+  padding-bottom: 4.2rem;
+  position: relative;
+}
+.section-intro.with-bottom-sep::after {
+  display: inline-block;
+  height: 1px;
+  width: 200px;
+  background-color: rgba(242, 242, 242, 0.1);
+  text-align: center;
+}
+
+/* ------------------------------------------------------------------- 
+ * responsive:
+ * section-intro
+ * ------------------------------------------------------------------- */
+@media only screen and (max-width: 1024px) {
+  .section-intro h1 {
+    font-size: 4.4rem;
+  }
+  .section-intro .lead {
+    font-size: 1.7rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .section-intro h1 {
+    font-size: 4rem;
+  }
+  .section-intro h3 {
+    font-size: 1.7rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .section-intro h1 {
+    font-size: 3.4rem;
+  }
+  .section-intro h3 {
+    font-size: 1.7rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .section-intro h3 {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .section-intro h1 {
+    font-size: 3.1rem;
+  }
+}
+.wide {
+  max-width: 1300px;
+}
+
+.narrow {
+  max-width: 800px;
+}
+
+.js .animate-this, .js .animate-intro {
+  opacity: 0;
+}
+
+.oldie .animate-this,
+.oldie .animate-intro
+.no-cssanimations .animate-this,
+.no-cssanimations .animate-intro {
+  opacity: 1;
+}
+
+
+/* ===================================================================
+ *  09. header styles - (_layout.scss)
+ *
+ * ------------------------------------------------------------------- */
+header {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 700;
+}
+header .row {
+  height: auto;
+  max-width: 1300px;
+  position: relative;
+}
+
+/* ------------------------------------------------------------------- 
+ * header logo - (_layout.css) 
+ * ------------------------------------------------------------------- */
+
+header .header-logo  {
+  position: absolute;
+  left: 50px;
+  top: 20px;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  display: block;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: none;
+  width: 350px;
+  height: 80px;
+  background: url("../img/logo_unsoed.png") no-repeat center;
+  background-size: 350px 80px;
+  text-shadow: none;
+  color: transparent;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+/* ------------------------------------------------------------------- 
+ * menu trigger - (_layout.css) 
+ * ------------------------------------------------------------------- */
+#header-menu-trigger {
+  display: block;
+  position: fixed;
+  right: 32px;
+  top: 30px;
+  height: 42px;
+  width: 42px;
+  line-height: 42px;
+  font-family: "montserrat-regular", sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  color: rgba(255, 255, 255, 0.5);
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#header-menu-trigger.opaque {
+  background-color: #000000;
+}
+#header-menu-trigger.opaque .header-menu-text {
+  background-color: #000000;
+}
+#header-menu-trigger:hover, #header-menu-trigger:focus {
+  color: #FFFFFF;
+}
+#header-menu-trigger .header-menu-text {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -75px;
+  width: 75px;
+  text-align: center;
+  background-color: transparent;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#header-menu-trigger .header-menu-icon {
+  display: block;
+  height: 3px;
+  width: 24px;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 50%;
+  right: 9px;
+  margin-top: -1.5px;
+}
+#header-menu-trigger .header-menu-icon::before, 
+#header-menu-trigger .header-menu-icon::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  position: absolute;
+  left: 0;
+}
+#header-menu-trigger .header-menu-icon::before {
+  top: -9px;
+}
+#header-menu-trigger .header-menu-icon::after {
+  bottom: -9px;
+}
+
+/* ------------------------------------------------------------------- 
+ * off-canvas menu - (_layout.scss) 
+ * ------------------------------------------------------------------- */
+#menu-nav-wrap {
+  background: #0c0c0c;
+  color: rgba(255, 255, 255, 0.801);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  padding: 3.6rem 3rem;
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  z-index: 800;
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+#menu-nav-wrap a{
+  color: rgba(255, 255, 255, 0.5);
+}
+#menu-nav-wrap a:hover, #menu-nav-wrap a:focus, #menu-nav-wrap a:active {
+  color: white;
+  text-decoration: none;
+}
+#menu-nav-wrap h3 {
+  color: white;
+  font-family: "montserrat-regular", sans-serif;
+  font-size: 2rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+#menu-nav-wrap .nav-list {
+  font-family: "montserrat-regular", sans-serif;
+  margin: 3.6rem 0 1.5rem 0;
+  padding: 0 0 1.8rem 0;
+  list-style: none;
+  line-height: 3.6rem;
+}
+#menu-nav-wrap .nav-list li {
+  padding-left: 0;
+  line-height: 4.2rem;
+}
+#menu-nav-wrap .nav-list li a {
+  color: rgba(255, 255, 255, 0.25);
+  display: block;
+}
+#menu-nav-wrap .nav-list li a:hover, 
+#menu-nav-wrap .nav-list li a:focus {
+  color: white;
+}
+#menu-nav-wrap .header-social-list {
+  list-style: none;
+  display: inline-block;
+  margin: 0;
+  font-size: 2.1rem;
+}
+#menu-nav-wrap .header-social-list li {
+  margin-right: 12px;
+  padding-left: 0;
+  display: inline-block;
+}
+#menu-nav-wrap .header-social-list li a {
+  color: rgba(255, 255, 255, 0.15);
+}
+#menu-nav-wrap .header-social-list li a:hover, 
+#menu-nav-wrap .header-social-list li a:focus {
+  color: white;
+}
+#menu-nav-wrap .header-social-list li:last-child {
+  margin: 0;
+}
+#menu-nav-wrap .close-button {
+  display: block;
+  height: 30px;
+  width: 30px;
+  border-radius: 3px;
+  position: absolute;
+  top: 36px;
+  right: 30px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+}
+#menu-nav-wrap .close-button span::before, 
+#menu-nav-wrap .close-button span::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 12px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 9px;
+  margin-top: -1px;
+}
+#menu-nav-wrap .close-button span::before {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+#menu-nav-wrap .close-button span::after {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+#menu-nav-wrap .sponsor-text {
+  font-family: "librebaskerville-regular", serif;
+  font-size: 1.4rem;
+  line-height: 3rem;
+}
+#menu-nav-wrap .sponsor-text span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* menu is open */
+.menu-is-open #menu-nav-wrap {
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+  visibility: visible;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ------------------------------------------------------------------- 
+ * responsive:
+ * header section 
+ * ------------------------------------------------------------------- */
+@media only screen and (max-width: 768px) {
+  header .header-logo a {
+    width: 51px;
+    height: 24px;
+    background-size: 51px 24px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  #header-menu-trigger .header-menu-text {
+    display: none;
+  }
+}
+
+
+/* ===================================================================
+ *  10. home - (_layout.scss)
+ *
+ * ------------------------------------------------------------------- */
+#pannellum {
+  width: 100%;
+  height: 100%;
+  
+  min-height: 804px;
+  position: relative;
+}
+#pannellum .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .2;
+  
+}
+
+.home-content-table {
+  width: 100%;  
+  height: 100%;
+  min-height: 804px;
+  display: table;
+  position: absolute;
+  text-align: center;
+  z-index: 800;
+  background: #252525b6;
+}
+
+.home-content-tablecell {
+  display: table-cell;
+  vertical-align: middle;
+}
+.home-content-tablecell .row {
+  
+  padding-top: 16.2rem;
+  padding-bottom: 15rem;
+}
+
+.home-content-tablecell h1 {
+  font-family: "montserrat-bold", serif;
+  font-size: 8rem;
+  line-height: 1.133;
+  color: rgb(209, 224, 214);
+}
+.home-content-tablecell .more {
+  margin: 4.8rem 0 0 0;
+}
+.home-content-tablecell .more .button {
+  color: #FFFFFF;
+}
+
+.home-content-tablecell .more .button:hover{
+  color: #f9a828;
+}
+
+/* home social-list */
+.home-social-list {
+  position: absolute;
+  left: 48px;
+  bottom: 54px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 2.4rem;
+  line-height: 1.75;
+  text-align: center;
+}
+.home-social-list::before {
+  display: block;
+  content: "";
+  width: 2px;
+  height: 42px;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+}
+.home-social-list li {
+  padding-left: 0;
+}
+.home-social-list li a, .home-social-list li a:visited {
+  color: #FFFFFF;
+}
+.home-social-list li a:hover, 
+.home-social-list li a:focus, 
+.home-social-list li a:active {
+  color: #151515;
+}
+
+/* scroll down */
+.scrolldown {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-transform-origin: right top 0;
+  -ms-transform-origin: right top 0;
+  transform-origin: right top 0;
+  float: right;
+}
+.scrolldown i {
+  padding-left: 9px;
+}
+.scrolldown a:hover, .scrolldown a:focus, .scrolldown a:active {
+  color: #151515 !important;
+}
+
+html[data-useragent*='MSIE 10.0'] .scrolldown,
+.oldie .scrolldown {
+  display: none;
+}
+
+.scroll-icon {
+  display: inline-block;
+  font-family: "montserrat-bold", sans-serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: .3rem;
+  color: #FFFFFF !important;
+  background: transparent;
+  position: relative;
+  top: 36px;
+  right: 42px;
+  -webkit-animation: animate-it 3s ease infinite;
+  animation: animate-it 3s ease infinite;
+}
+
+/* vertical animation */
+@-webkit-keyframes animate-it {
+  0%, 60%, 80%, 100% {
+    -webkit-transform: translateX(0);
+  }
+  20% {
+    -webkit-transform: translateX(-5px);
+  }
+  40% {
+    -webkit-transform: translateX(20px);
+  }
+}
+@keyframes animate-it {
+  0%, 60%, 80%, 100% {
+    -webkit-transform: translateX(0);
+  }
+  20% {
+    -webkit-transform: translateX(-5px);
+  }
+  40% {
+    -webkit-transform: translateX(20px);
+  }
+}
+
+/* ------------------------------------------------------------------- 
+ * responsive:
+ * home section 
+ * ------------------------------------------------------------------- */
+@media only screen and (max-width: 1200px) {
+  .home-content-tablecell h3 {
+    font-size: 2.1rem;
+  }
+  .home-content-tablecell h1 {
+    font-size: 7rem;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .home-content-tablecell h3 {
+    font-size: 2rem;
+  }
+  .home-content-tablecell h1 {
+    font-size: 6rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .home-content-tablecell .row {
+    max-width: 600px;
+  }
+  .home-content-tablecell h3 {
+    font-size: 1.8rem;
+  }
+  .home-content-tablecell h1 {
+    font-size: 5.2rem;
+  }
+  .home-content-tablecell h1 br {
+    display: none;
+  }
+
+  .home-social-list {
+    left: 36px;
+    bottom: 30px;
+    font-size: 2.1rem;
+  }
+  .home-social-list::before {
+    height: 30px;
+  }
+
+  .scrolldown .scroll-icon {
+    font-size: 1.2rem;
+    top: 24px;
+    right: 10px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #home {
+    min-height: 702px;
+  }
+
+  .home-content-tablecell .row {
+    max-width: 480px;
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+  .home-content-tablecell h3 {
+    font-size: 1.7rem;
+  }
+  .home-content-tablecell h1 {
+    font-size: 4.8rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .home-content-tablecell .row {
+    max-width: 420px;
+  }
+  .home-content-tablecell h3 {
+    font-size: 1.5rem;
+  }
+  .home-content-tablecell h1 {
+    font-size: 4.2rem;
+  }
+
+  .home-social-list {
+    left: 30px;
+    bottom: 30px;
+    font-size: 1.8rem;
+  }
+  .home-social-list::before {
+    height: 24px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  #home {
+    min-height: 654px;
+  }
+
+  .home-content-tablecell .row {
+    padding-top: 4.8rem;
+    padding-bottom: 10.8rem;
+  }
+  .home-content-tablecell h3 {
+    font-size: 1.4rem;
+  }
+  .home-content-tablecell h1 {
+    font-size: 3.6rem;
+  }
+}
+
+
+/* ===================================================================
+ *  17. footer - (_layout.scss)
+ *
+ * ------------------------------------------------------------------- */
+footer {
+  margin: 0 0 5.4rem 0;
+  padding: 0;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+footer a, footer a:visited {
+  color: #FFFFFF;
+}
+footer a:hover, footer a:focus {
+  color: #f9a828;
+}
+footer .row {
+  max-width: 1024px;
+}
+footer h4.h05 {
+  color: #FFFFFF;
+  position: relative;
+  padding-bottom: 4.2rem;
+  margin-bottom: 3.6rem;
+}
+footer h4.h05::after {
+  display: block;
+  content: "";
+  width: 100px;
+  height: 1px;
+  background-color:#e9eaea;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* ------------------------------------------------------------------- 
+ * responsive:
+ * footer
+ * ------------------------------------------------------------------- */
+@media only screen and (max-width: 768px) {
+  #go-top {
+    bottom: 0;
+    right: 0;
+  }
+
+  footer h4.h05 {
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  footer h4.h05::after {
+    left: 50%;
+    margin-left: -50px;
+  }
+}
