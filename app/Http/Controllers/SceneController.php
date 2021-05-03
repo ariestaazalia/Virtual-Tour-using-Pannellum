@@ -22,7 +22,7 @@ class SceneController extends Controller
     }
 
     public function pannellum() {
-        $scene= DB::table('scenes')->find(2);
+        $scene= DB::table('scenes')->where('status', '1')->first();
         return view('welcome', compact('scene'));
     }
 
@@ -109,10 +109,8 @@ class SceneController extends Controller
         $updated = Scene::where('id',$id)->update([
             'status' => $request['check']
         ]);
-
-        return $updated;
         
-        if ($scene) {
+        if ($updated) {
             return redirect()->route('scene')->with('success', 'Scene Utama Berhasil Diubah');
         }else {
             return back()->withInput()->with(['error', 'Scene Utama Gagal Diubah']);
