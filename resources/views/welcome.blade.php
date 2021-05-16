@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Virtual Tour Fakultas Teklnik Universitas Jenderal Soedirman</title>
+        <title>Virtual Tour Fakultas Teknik Universitas Jenderal Soedirman</title>
 
         {{-- Bootstrap --}}
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" media="all">
@@ -102,17 +102,35 @@
 
     <script>
         pannellum.viewer('pannellum', {
-            "author": "Universitas Jenderal Soedirman",
-            "type": "{{$scene->type}}",
-            "panorama": "{{asset('/img/uploads/' . $scene->image)}}",
-            "yaw": "{{$scene->yaw}}",
-            "pitch": "{{$scene->pitch}}",
-            "hfov": "{{$scene->hfov}}",
-            "autoRotate": -2,
-            "autoLoad": true
+            "default": {
+                "firstScene": "{{$fscene->id}}",
+                "author": "Matthew Petroff",
+                "sceneFadeDuration": 1000
+            },
+
+            "scenes": { @foreach($scenes as $scene)
+                "{{$scene->id}}": {
+                    "title": "{{$scene->title}}",
+                    "hfov": {{$scene->hfov}},
+                    "pitch": {{$scene->pitch}},
+                    "yaw": {{$fscene->yaw}},
+                    "type": "{{$scene->type}}",
+                    "panorama": "{{asset('/img/uploads/' . $scene->image)}}",
+                    "autoLoad":true,
+                    "autoRotate": -2,
+
+                    "hotSpots": [@foreach ($hotspots->where('sourceScene', $fscene->id) as $hotspot)
+                        {
+                            "pitch": "{{$hotspot->pitch}}",
+                            "yaw": "{{$hotspot->yaw}}",
+                            "type": "{{$hotspot->type}}",
+                            "text": "{{$hotspot->info}}",
+                            "sceneId": "{{$hotspot->targetScene}}"
+                        }, @endforeach
+                    ]
+                }, @endforeach
+            }
         });
     </script> 
-    
-    
   </body>
 </html>

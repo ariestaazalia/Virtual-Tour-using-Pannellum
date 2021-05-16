@@ -8,11 +8,16 @@ class Hotspot extends Model
 {
     protected $table = 'hotspots';
     protected $fillable = [
-        'title', 'type', 'yaw', 'pitch', 'targetYaw', 'targetPitch',  'info', 'sceneID'
+        'title', 'type', 'yaw', 'pitch', 'targetYaw', 'targetPitch',  'info', 'sourceScene', 'targetScene'
     ];
 
     public function scene()
     {
-        return $this->belongsTo('App\Scene', 'sceneID');
+        return $this->belongsTo('App\Scene', 'sourceScene');
+    }
+
+    public function targetScene()
+    {
+        return $this->belongsTo('App\Scene', 'targetScene');
     }
 }

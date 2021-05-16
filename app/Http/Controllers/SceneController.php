@@ -17,13 +17,30 @@ class SceneController extends Controller
     public function index()
     {
         $scene = Scene::all();
-        $hotspot = Hotspot::all();
-        return view('admin.scene', compact('hotspot', 'scene'));
+        $hotspots = Hotspot::all();
+        $sourceScene = DB::table('hotspots')
+            ->join('scenes', 'scenes.id', '=', 'hotspots.sourceScene')
+            ->select('scenes.id', 'scenes.title', 'hotspots.sourceScene')
+            ->get();
+
+        $targetScene = DB::table('hotspots')
+            ->join('scenes', 'scenes.id', '=', 'hotspots.targetScene')
+            ->select('scenes.id', 'scenes.title', 'hotspots.targetScene')
+            ->get();
+        
+        return view('admin.config', compact('hotspots', 'scene', 'sourceScene', 'targetScene'));
     }
 
     public function pannellum() {
-        $scene= DB::table('scenes')->where('status', '1')->first();
-        return view('welcome', compact('scene'));
+        $fscene= DB::table('scenes')->where('status', '1')->first();
+        $scenes= DB::table('scenes')->get();
+        $hotspots = DB::table('hotspots')
+            ->join('scenes', 'scenes.id', '=', 'hotspots.sourceScene')
+            ->select('hotspots.*')
+            ->get();
+
+
+        return view('welcome', compact('fscene', 'scenes', 'hotspots'));
     }
 
     /**
@@ -56,9 +73,9 @@ class SceneController extends Controller
             'pitch' => $request['pitch'],
             'image' => $file_name
         ]);
-
+        
         if ($scene) {
-            return redirect()->route('scene')->with('success', 'Scene Berhasil Ditambahkan');
+            return redirect()->route('config')->with('success', 'Scene Berhasil Ditambahkan');
         }else {
             return back()->withInput()->with(['error', 'Scene Gagal Ditambahkan']);
         }
@@ -97,7 +114,7 @@ class SceneController extends Controller
         ]);
         
         if ($scene) {
-            return redirect()->route('scene')->with('success', 'Scene Berhasil Diubah');
+            return redirect()->route('config')->with('success', 'Scene Berhasil Diubah');
         }else {
             return back()->withInput()->with(['error', 'Scene Gagal Ditambahkan']);
         }
@@ -111,7 +128,7 @@ class SceneController extends Controller
         ]);
         
         if ($updated) {
-            return redirect()->route('scene')->with('success', 'Scene Utama Berhasil Diubah');
+            return redirect()->route('config')->with('success', 'Scene Utama Berhasil Diubah');
         }else {
             return back()->withInput()->with(['error', 'Scene Utama Gagal Diubah']);
         }
@@ -125,6 +142,6 @@ class SceneController extends Controller
     public function destroy($id)
     {
         Scene::destroy($id);
-        return redirect()->route('scene')->with('success','Scene Berhasil Dihapus');
+        return redirect()->route('config')->with('success','Scene Berhasil Dihapus');
     }
 }

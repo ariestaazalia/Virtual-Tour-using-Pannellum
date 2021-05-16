@@ -17,7 +17,7 @@ Auth::routes();
 
 Route::get('/', 'SceneController@pannellum')->name('welcome');
 Route::get('/admin', 'HomeController@index')->name('home')->middleware('auth');
-Route::get('/konfigurasi', 'SceneController@index')->name('scene')->middleware('auth');
+Route::get('/konfigurasi', 'SceneController@index')->name('config')->middleware('auth');
 Route::get('/profile', 'UserController@index')->name('profil')->middleware('auth');
 
 Route::post('/addScene', 'SceneController@store')->name('addScene')->middleware('auth');

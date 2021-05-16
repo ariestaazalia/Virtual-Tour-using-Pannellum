@@ -16,12 +16,11 @@ class HotspotController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'scene' => 'required',
+            'sourceScene' => 'required',
+            'targetScene' => 'required',
             'type' => 'required',
             'yaw' => 'required',
             'pitch' => 'required',
-            'targetYaw' => 'required',
-            'targetPitch' => 'required',
             'text' => 'required'
         ]);
         
@@ -29,13 +28,12 @@ class HotspotController extends Controller
             'type' => $request['type'],
             'yaw' => $request['yaw'],
             'pitch' => $request['pitch'],
-            'targetYaw' => $request['targetYaw'],
-            'targetPitch' => $request['targetPitch'],
             'info' => $request['text'],
-            'sceneID' => $request['scene']
+            'sourceScene' => $request['sourceScene'],
+            'targetScene' => $request['targetScene']
         ]);
         
-        return redirect()->route('scene')->with('success', 'Hotspot Berhasil Ditambahkan');
+        return redirect()->route('config')->with('success', 'Hotspot Berhasil Ditambahkan');
     }
 
     /**
@@ -48,12 +46,11 @@ class HotspotController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'scene' => 'required',
+            'sourceScene' => 'required',
+            'targetScene' => 'required',
             'type' => 'required',
             'yaw' => 'required',
             'pitch' => 'required',
-            'targetYaw' => 'required',
-            'targetPitch' => 'required',
             'text' => 'required'
         ]);
 
@@ -61,13 +58,12 @@ class HotspotController extends Controller
             'type' => $request['type'],
             'yaw' => $request['yaw'],
             'pitch' => $request['pitch'],
-            'targetYaw' => $request['targetYaw'],
-            'targetPitch' => $request['targetPitch'],
             'info' => $request['text'],
-            'sceneID' => $request['scene']
+            'sourceScene' => $request['sourceScene'],
+            'targetScene' => $request['targetScene']
         ]);
         
-        return redirect()->route('scene')->with(['success' => 'Hotspot Berhasil Diubah']);
+        return redirect()->route('config')->with(['success' => 'Hotspot Berhasil Diubah']);
     }
 
     /**
@@ -91,6 +87,6 @@ class HotspotController extends Controller
     public function destroy($id)
     {
         Hotspot::destroy($id);
-        return redirect()->route('scene')->with('success','Hotspot Berhasil Dihapus');
+        return redirect()->route('config')->with('success','Hotspot Berhasil Dihapus');
     }
 }

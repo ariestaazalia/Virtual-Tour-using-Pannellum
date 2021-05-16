@@ -14,7 +14,8 @@ class AddFkToHotspotsTable extends Migration
     public function up()
     {
         Schema::table('hotspots', function (Blueprint $table) {
-            $table->foreignId('sceneID')->constrained('scenes')->cascadeOnDelete();
+            $table->foreignId('sourceScene')->constrained('scenes')->cascadeOnDelete();
+            $table->foreignId('targetScene')->constrained('scenes')->cascadeOnDelete();
         });
     }
 
@@ -26,8 +27,8 @@ class AddFkToHotspotsTable extends Migration
     public function down()
     {
         Schema::table('hotspots', function (Blueprint $table) {
-            $table->dropForeign(['sceneID']);
-            $table->dropColumn(['sceneID']);
+            $table->dropForeign(['sourceScene'],['targetScene']);
+            $table->dropColumn(['sourceScene'],['targetScene']);
         });
     }
 }

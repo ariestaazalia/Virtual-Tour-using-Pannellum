@@ -14,6 +14,6 @@ class Scene extends Model
     
     public function hotspots()
     {
-        return $this->hasMany('App\Hotspot', 'sceneID');
+        return $this->hasMany('App\Hotspot', 'sourceScene');
     }
 }

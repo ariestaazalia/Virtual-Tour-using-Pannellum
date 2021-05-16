@@ -12,8 +12,8 @@
                         <a href="{{ route('home') }}"><i class="ti-home"></i><span>Dashboard</span></a>
                     </li>
                     
-                    <li class="{{ Request::routeIs('scene') ? 'active' : '' }}">
-                        <a href="{{ route('scene') }}"><i class="ti-map-alt"></i> <span>Scene dan Hotspot</span></a>
+                    <li class="{{ Request::routeIs('config') ? 'active' : '' }}">
+                        <a href="{{ route('config') }}"><i class="ti-map-alt"></i> <span>Scene dan Hotspot</span></a>
                     </li>
                 </ul>
             </nav>
