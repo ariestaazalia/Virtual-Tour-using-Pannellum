@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{asset('css/default-css.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+    <!-- Sorting -->
+    <link rel="stylesheet" href="{{asset('css/tablesort.css')}}">
     <!-- modernizr css -->
     <script src="{{asset('js/modernizr-2.8.3.min.js')}}"></script>
 </head>

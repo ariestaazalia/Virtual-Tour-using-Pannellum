@@ -104,7 +104,7 @@
         pannellum.viewer('pannellum', {
             "default": {
                 "firstScene": "{{$fscene->id}}",
-                "author": "Matthew Petroff",
+                "author": "Universitas Jenderal Soedirman",
                 "sceneFadeDuration": 1000
             },
 

@@ -107,14 +107,14 @@
 
                             <!-- Data Scene -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center">
+                                <table class="table table-hover progress-table text-center" id="config">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
                                             <th scope="col">Nama</th>
-                                            <th scope="col">Gambar</th>
-                                            <th scope="col">Scene Utama</th>
-                                            <th scope="col">Aksi</th>
+                                            <th scope="col" data-sort-method='none'>Gambar</th>
+                                            <th scope="col" data-sort-method='none'>Scene Utama</th>
+                                            <th scope="col" data-sort-method='none'>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -347,7 +347,7 @@
 
                             <!-- Data Hotspot -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center">
+                                <table class="table table-hover progress-table text-center" id="config">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
@@ -355,7 +355,7 @@
                                             <th scope="col">Target Scene</th>
                                             <th scope="col">Tipe</th>
                                             <th scope="col">Info</th>
-                                            <th scope="col">Aksi</th>
+                                            <th scope="col" data-sort-method='none'>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -395,9 +395,7 @@
 
                                                                         <p class="d-flex justify-content-left">
                                                                             <b>Target Scene: </b> 
-                                                                            @foreach ($targetScene as $target)
                                                                                 <td>{{$target->title}}</td>
-                                                                            @endforeach> 
                                                                         </p><br>
 
                                                                         <p class="d-flex justify-content-left"><b>Tipe: </b> {{ $hotspot->type}} </p><br>
@@ -562,4 +560,12 @@
             });
         });
     </script>
+
+<!-- Table Sorting -->
+<script src="{{asset('js/tablesort.min.js')}}"></script>
+<script src="{{asset('js/tablesort.number.js')}}"></script>
+
+<script>
+  new Tablesort(document.getElementById('config'));
+</script>
 @endpush
