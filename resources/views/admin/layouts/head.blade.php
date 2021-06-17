@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('css/metisMenu.css')}}">
     <!-- others css -->
     <link rel="stylesheet" href="{{asset('css/typography.css')}}">
     <link rel="stylesheet" href="{{asset('css/default-css.css')}}">

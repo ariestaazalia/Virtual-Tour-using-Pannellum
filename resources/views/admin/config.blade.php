@@ -363,13 +363,17 @@
                                         @foreach ($hotspots as $hotspot)
                                             <tr>
                                                 <th scope="row">{{$num++}}</th>
-                                                @foreach ($sourceScene as $source)
-                                                    <td>{{$source->title}}</td>
+                                                @foreach ($scene as $scenes)
+                                                    @if ($hotspot->sourceScene == $scenes->id)
+                                                        <td>{{$scenes->title}}</td>
+                                                    @endif
                                                 @endforeach
 
-                                                @foreach ($targetScene as $target)
-                                                    <td>{{$target->title}}</td>
-                                                @endforeach>
+                                                @foreach ($scene as $scenes)
+                                                    @if ($hotspot->targetScene == $scenes->id)
+                                                        <td>{{$scenes->title}}</td>
+                                                    @endif
+                                                @endforeach
 
                                                 <td>{{$hotspot->type}}</td>
                                                 <td>{{$hotspot->info}}</td>
@@ -389,16 +393,8 @@
                                                                         <h5>Info Hotspot</h5><br>
 
                                                                         <p class="d-flex justify-content-left">
-                                                                            <b>Asal Scene: </b> 
-                                                                            
+                                                                            <b>Tipe: </b> {{ $hotspot->type}} 
                                                                         </p><br>
-
-                                                                        <p class="d-flex justify-content-left">
-                                                                            <b>Target Scene: </b> 
-                                                                                <td>{{$target->title}}</td>
-                                                                        </p><br>
-
-                                                                        <p class="d-flex justify-content-left"><b>Tipe: </b> {{ $hotspot->type}} </p><br>
 
                                                                         <p class="d-flex justify-content-left"> 
                                                                             <b> Yaw: </b> {{$hotspot->yaw}}
@@ -449,7 +445,7 @@
                                                                                 <select class="form-control form-control-lg input-rounded mb-4" name="targetScene" required onchange="showButton()">
                                                                                     <option value="" disabled>Pilih Salah Satu </option>
                                                                                     @foreach ($scene as $scenes)
-                                                                                        @if ($hotspot->tergetScene == $scenes->id)
+                                                                                        @if ($hotspot->targetScene == $scenes->id)
                                                                                             <option value="{{$hotspot->targetScene}}" selected> {{$scenes->title}}</option>
                                                                                         @else
                                                                                             <option value="{{$scenes->id}}"> {{$scenes->title}}</option>
@@ -484,7 +480,7 @@
                                                                             
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                                                                                <button type="submit" id="show" class="btn btn-primary" disabled>Simpan</button>
+                                                                                <button type="submit" class="btn btn-primary">Simpan</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -534,7 +530,6 @@
             </div>
         </div>
     </div>
-    <!-- trading history area end -->
 </div>
 @endsection
 
@@ -555,8 +550,13 @@
         $(document).ready(function() {
             $("input:checkbox").change(function(){
                 var getId = $(this).attr("id");
-                $(this).find('input[name="check"]:not(:checked)').prop('checked', true).val(0);
-                $("#status"+getId).submit();
+                if ($('input[type=checkbox]:checked').length > 1) {
+                    $(this).prop('checked', false)
+                    alert('Scene Utama Hanya Diperbolehkan 1')
+                }else{
+                    $(this).find('input[name="check"]:not(:checked)').prop('checked', true).val(0);
+                    $("#status"+getId).submit();
+                }
             });
         });
     </script>

@@ -20,7 +20,7 @@ class SceneController extends Controller
         $hotspots = Hotspot::all();
         $sourceScene = DB::table('hotspots')
             ->join('scenes', 'scenes.id', '=', 'hotspots.sourceScene')
-            ->select('scenes.id', 'scenes.title', 'hotspots.sourceScene')
+            ->select('scenes.id', 'scenes.title', 'hotspots.*')
             ->get();
 
         $targetScene = DB::table('hotspots')

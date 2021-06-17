@@ -16,8 +16,8 @@ class CreateHotspotsTable extends Migration
         Schema::create('hotspots', function (Blueprint $table) {
             $table->id();
             $table->string('type', 255);
-            $table->float('yaw', 8, 2);
-            $table->float('pitch', 8, 2);
+            $table->double('yaw', 8, 2);
+            $table->double('pitch', 8, 2);
             $table->text('info');
             $table->timestamps();
         });

@@ -28,6 +28,6 @@ class HomeController extends Controller
         $jumlahScene = Scene::all();
         $jumlahHotspot = Hotspot::all();
 
-        return view('admin.index', compact('jumlahScene', 'jumlahHotspot'));
+        return view('admin.index', compact('jumlahScene', 'jumlahHotspot'))->with(['success' => 'Selamat Datang di Dashboard Virtual Tour Fakultas Teknik Universitas Jenderal Soedirman']);
     }
 }

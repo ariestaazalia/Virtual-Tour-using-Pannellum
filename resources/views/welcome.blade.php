@@ -113,13 +113,13 @@
                     "title": "{{$scene->title}}",
                     "hfov": {{$scene->hfov}},
                     "pitch": {{$scene->pitch}},
-                    "yaw": {{$fscene->yaw}},
+                    "yaw": {{$scene->yaw}},
                     "type": "{{$scene->type}}",
                     "panorama": "{{asset('/img/uploads/' . $scene->image)}}",
                     "autoLoad":true,
                     "autoRotate": -2,
 
-                    "hotSpots": [@foreach ($hotspots->where('sourceScene', $fscene->id) as $hotspot)
+                    "hotSpots": [@foreach ($hotspots->where('sourceScene', $scene->id) as $hotspot)
                         {
                             "pitch": "{{$hotspot->pitch}}",
                             "yaw": "{{$hotspot->yaw}}",
