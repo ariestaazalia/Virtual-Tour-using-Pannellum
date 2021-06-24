@@ -193,38 +193,38 @@
 
                                                                             <div class="form-group">
                                                                                 <label for="title" class="d-flex justify-content-left">Judul Scene</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="text" id="title" name="title" required value="{{$item->title}}" onchange="showButton()">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="text" id="title" name="title" required value="{{$item->title}}">
                                                                             </div>
                         
                                                                             <div class="form-group">
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="hidden" id="type" name="type" value="{{$item->type}}" onchange="showButton()">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="hidden" id="type" name="type" value="{{$item->type}}">
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="hfov" class=" d-flex justify-content-left">Hfov</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="hfov" name="hfov" min="-360" max="360" value="{{$item->hfov}}" required onchange="showButton()">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="hfov" name="hfov" min="-360" max="360" value="{{$item->hfov}}" required>
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="yaw" class=" d-flex justify-content-left">Yaw</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="yaw" name="yaw" min="0" max="180" value="{{$item->yaw}}" required onchange="showButton()">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="yaw" name="yaw" min="0" max="180" value="{{$item->yaw}}" required>
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="pitch" class=" d-flex justify-content-left">Pitch</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="pitch" name="pitch" min="0" max="180" value="{{$item->pitch}}" required onchange="showButton()">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="pitch" name="pitch" min="0" max="180" value="{{$item->pitch}}" required>
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="image" class=" d-flex justify-content-left">Image</label>
                                                                                 <img class="card-img-top img-fluid" src="{{asset('/img/uploads/' . $item->image)}}">
                                                                                 <div class="custom-file">
-                                                                                    <input type="file" class="form-control-file" id="image" name="image" accept="image/*" onchange="showButton()">
+                                                                                    <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                                                                                <button type="submit" id="show" class="btn btn-primary">Simpan</button>
+                                                                                <button type="submit" class="btn btn-primary">Simpan</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -427,8 +427,8 @@
                                                                             @method('PUT')
                                                                             
                                                                             <div class="form-group">
-                                                                                <label for="scene" class="d-flex justify-content-left">Asal Scene</label>
-                                                                                <select class="form-control form-control-lg input-rounded mb-4" name="sourceScene" required onchange="showButton()">
+                                                                                <label for="sourceScene" class="d-flex justify-content-left">Asal Scene</label>
+                                                                                <select class="form-control form-control-lg input-rounded mb-4" name="sourceScene" required>
                                                                                     <option value="" disabled>Pilih Salah Satu </option>
                                                                                     @foreach ($scene as $scenes)
                                                                                         @if ($hotspot->sourceScene == $scenes->id)
@@ -442,7 +442,7 @@
 
                                                                             <div class="form-group">
                                                                                 <label for="scene" class="d-flex justify-content-left">Target Scene</label>
-                                                                                <select class="form-control form-control-lg input-rounded mb-4" name="targetScene" required onchange="showButton()">
+                                                                                <select class="form-control form-control-lg input-rounded mb-4" name="targetScene" required>
                                                                                     <option value="" disabled>Pilih Salah Satu </option>
                                                                                     @foreach ($scene as $scenes)
                                                                                         @if ($hotspot->targetScene == $scenes->id)
@@ -456,26 +456,26 @@
                                                                             
                                                                             <div class="form-group">
                                                                                 <label for="type" class="d-flex justify-content-left">Tipe</label>
-                                                                                <select class="form-control form-control-lg input-rounded mb-4" name="type" required onchange="showButton()">
+                                                                                <select class="form-control form-control-lg input-rounded mb-4" name="type" required>
                                                                                     <option value="" disabled>Pilih Salah Satu </option>
-                                                                                    <option value="info" @if (old('type') == "info") {{ 'selected' }} @endif>Info</option>
-						                                                            <option value="scene" @if (old('type') == "scene") {{ 'selected' }} @endif>Penghubung</option>
+                                                                                    <option value="info" @if ($hotspot->type == "info") {{ 'selected' }} @endif>Info</option>
+						                                                            <option value="scene" @if ($hotspot->type == "scene") {{ 'selected' }} @endif>Penghubung</option>
                                                                                 </select>
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="yaw" class="d-flex justify-content-left">Yaw</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" id="yaw" name="yaw" min="-360" max="360" value="{{$hotspot->yaw}}" onchange="showButton()">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" id="yaw" name="yaw" min="-360" max="360" value="{{$hotspot->yaw}}">
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="pitch" class="d-flex justify-content-left">Pitch</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" id="pitch" name="pitch" min="-360" max="360" value="{{$hotspot->pitch}}" onchange="showButton()">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" id="pitch" name="pitch" min="-360" max="360" value="{{$hotspot->pitch}}">
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="text" class="d-flex justify-content-left">Text</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="text" id="text" name="text" value="{{$hotspot->info}}" onchange="showButton()">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="text" id="text" name="text" value="{{$hotspot->info}}">
                                                                             </div>
                                                                             
                                                                             <div class="modal-footer">
