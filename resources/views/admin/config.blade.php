@@ -412,9 +412,9 @@
                                                         </div>
     
                                                         <!-- Edit -->
-                                                        <li class="mr-3"><a href="#" class="text-success" data-toggle="modal" data-target="#editModal2{{$hotspot['id']}}"><i class="fa fa-edit"></i></a></li>
+                                                        <li class="mr-3"><a href="#" class="text-success" data-toggle="modal" data-target="#editHotspot{{$hotspot['id']}}"><i class="fa fa-edit"></i></a></li>
                                                         <!-- Edit Modal -->
-                                                        <div class="modal fade" id="editModal2{{$hotspot['id']}}">
+                                                        <div class="modal fade" id="editHotspot{{$hotspot['id']}}">
                                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">

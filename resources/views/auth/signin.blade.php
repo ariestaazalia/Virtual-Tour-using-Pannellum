@@ -12,7 +12,20 @@
                     <h4>Login</h4>
                     <p>Halo, Login untuk Memulai Kelola Virtual Tour Anda</p>
                 </div>
+
                 <div class="login-form-body">
+
+                @if ($message = Session::get('success'))
+                    <div class="alert-dismiss">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{ $message }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span class="fa fa-times"></span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
+                
                     <div class="form-gp">
                         <label for="username">Username</label>
                         <input id="username" type="username" 
