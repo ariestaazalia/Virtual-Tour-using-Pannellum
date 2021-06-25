@@ -72,17 +72,17 @@
 
                                                     <div class="form-group">
                                                         <label for="hfov">Hfov</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="hfov" name="hfov" min="-360" max="360" value="100" required>
+                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="hfov" step="0.1" name="hfov" min="-360" max="360" value="100" required>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="yaw">Yaw</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="yaw" name="yaw" min="0" max="180" value="0" required>
+                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="yaw" step="0.1" name="yaw" min="0" max="180" value="0" required>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="pitch">Pitch</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="pitch" name="pitch" min="0" max="180" value="0" required>
+                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="pitch" step="0.1" name="pitch" min="0" max="180" value="0" required>
                                                     </div>
 
                                                     <div class="form-group">
@@ -321,12 +321,12 @@
 
                                                     <div class="form-group">
                                                         <label for="yaw">Yaw</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" required type="number" id="yaw" name="yaw" min="-360" max="360" value="0">
+                                                        <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" id="yaw" name="yaw" min="-360" max="360" value="0">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="pitch">Pitch</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" required type="number" id="pitch" name="pitch" min="-360" max="360" value="0">
+                                                        <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" id="pitch" name="pitch" min="-360" max="360" value="0">
                                                     </div>
 
                                                     <div class="form-group">
