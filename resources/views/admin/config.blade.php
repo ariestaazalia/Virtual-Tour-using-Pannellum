@@ -107,7 +107,7 @@
 
                             <!-- Data Scene -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center" id="config">
+                                <table class="table table-hover progress-table text-center" id="sceneTable">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
@@ -121,9 +121,9 @@
                                         @php
                                             $num= 1;
                                         @endphp
-                                        @foreach($scene as $item)
+                                        @foreach($scenePage as $key => $item)
                                             <tr>
-                                                <th scope="row">{{$num++}}</th>
+                                                <th scope="row">{{$scenePage->firstItem() +$key}}</th>
                                                 <td>{{$item->title}}</td>
                                                 <td><img style="height: 70px" src="{{asset('/img/uploads/' . $item->image)}}"></td>
                                                 <td> 
@@ -267,6 +267,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{ $scenePage->links() }}
                             </div>
                         </div>
 
@@ -347,7 +348,7 @@
 
                             <!-- Data Hotspot -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center" id="config">
+                                <table class="table table-hover progress-table text-center" id="hotspotTable">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
@@ -359,10 +360,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php $num = 1; @endphp
-                                        @foreach ($hotspots as $hotspot)
+                                        @php
+                                            $num= 1;
+                                        @endphp
+                                        @foreach ($hotspotPage as $number => $hotspot)
                                             <tr>
-                                                <th scope="row">{{$num++}}</th>
+                                                <th scope="row">{{$hotspotPage->firstItem() + $number}}</th>
                                                 @foreach ($scene as $scenes)
                                                     @if ($hotspot->sourceScene == $scenes->id)
                                                         <td>{{$scenes->title}}</td>
@@ -523,6 +526,8 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+
+                                {{ $hotspotPage->links() }}
                             </div>
                         </div>
                     </div>
@@ -566,6 +571,7 @@
 <script src="{{asset('js/tablesort.number.js')}}"></script>
 
 <script>
-  new Tablesort(document.getElementById('config'));
+  new Tablesort(document.getElementById('sceneTable'));
+  new Tablesort(document.getElementById('hotspotTable'));
 </script>
 @endpush

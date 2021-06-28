@@ -96,6 +96,7 @@
             "default": {
                 "firstScene": "{{$fscene->id}}",
                 "author": "Universitas Jenderal Soedirman",
+                "autoLoad":true,
                 "sceneFadeDuration": 2000,
                 "autoRotate": -1,
                 "autoRotateInactivityDelay": 30000
@@ -109,7 +110,6 @@
                     "yaw": {{$scene->yaw}},
                     "type": "{{$scene->type}}",
                     "panorama": "{{asset('/img/uploads/' . $scene->image)}}",
-                    "autoLoad":true,
 
                     "hotSpots": [@foreach ($hotspots->where('sourceScene', $scene->id) as $hotspot)
                         {
