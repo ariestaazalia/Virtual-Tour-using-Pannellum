@@ -2852,7 +2852,6 @@
 }
 .lg-icon {
   font-family: 'lg';
-  speak: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -3806,7 +3805,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 
 .owl-carousel .owl-stage {
   position: relative;
-  -ms-touch-action: pan-Y;
 }
 
 .owl-carousel .owl-stage:after {
@@ -3822,14 +3820,12 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   position: relative;
   overflow: hidden;
   /* fix for flashing background */
-  -webkit-transform: translate3d(0px, 0px, 0px);
 }
 
 .owl-carousel .owl-item {
   position: relative;
   min-height: 1px;
   float: left;
-  -webkit-backface-visibility: hidden;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
@@ -3837,7 +3833,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .owl-carousel .owl-item img {
   display: block;
   width: 100%;
-  -webkit-transform-style: preserve-3d;
 }
 
 .owl-carousel .owl-nav.disabled,
@@ -3978,7 +3973,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   background: url("owl.video.play.png") no-repeat;
   cursor: pointer;
   z-index: 1;
-  -webkit-backface-visibility: hidden;
   transition: -webkit-transform 100ms ease;
   transition: transform 100ms ease;
 }
@@ -4052,7 +4046,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 
 .flexslider .slides > li {
   display: none;
-  -webkit-backface-visibility: hidden;
 }
 
 .flexslider .slides img {

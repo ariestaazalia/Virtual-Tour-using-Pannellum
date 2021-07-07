@@ -63,7 +63,7 @@ class HotspotController extends Controller
             'targetScene' => $request['targetScene']
         ]);
         
-        return redirect()->route('config')->with(['success' => 'Hotspot Berhasil Diubah']);
+        return redirect()->route('config')->with(['success' => 'Hotspot Berhasil Diubah'])->withInput(['tab'=>'hotspot']);
     }
 
     /**

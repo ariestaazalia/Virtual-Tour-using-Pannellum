@@ -31,8 +31,7 @@ class UserController extends Controller
     {
         User::where('id', $id)->update([
             'name'=>$request['name'],
-            'username'=>$request['username'],
-            'password'=> Hash::make($request['password'])
+            'username'=>$request['username']
         ]);
         
         return redirect()->route('profil')->with(['success' => 'Profil Berhasil Diubah']);

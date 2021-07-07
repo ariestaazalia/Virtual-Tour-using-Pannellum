@@ -10,7 +10,7 @@
                 @csrf
                 <div class="login-form-head">
                     <h4>Login</h4>
-                    <p>Halo, Login untuk Memulai Kelola Virtual Tour Anda</p>
+                    <p>Halo, Login untuk Kelola Virtual Tour Anda</p>
                 </div>
 
                 <div class="login-form-body">
@@ -40,7 +40,7 @@
                         <div class="text-danger"></div>
                     </div>
                     <div class="submit-btn-area">
-                        <button id="form_submit" type="submit">{{ __('Login') }} <i class="ti-arrow-right"></i></button>
+                        <button id="form_submit" type="submit">{{ __('Masuk') }} <i class="ti-arrow-right"></i></button>
                     </div>
                     <div class="form-footer text-center mt-5">
                         <p class="text-muted">Tidak Punya Akun? <a href="{{ route('register') }}">Registrasi</a></p>

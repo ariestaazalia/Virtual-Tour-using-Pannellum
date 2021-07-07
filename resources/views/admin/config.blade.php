@@ -32,7 +32,7 @@
                 <!-- Tab -->
                 <div class="d-flex justify-content-center">
                     <div class="trd-history-tabs">
-                        <ul class="nav" role="tablist">
+                        <ul class="nav" role="tablist" id="TabMenu">
                             <li>
                                 <a class="active" data-toggle="tab" href="#scene" role="tab">Scene</a>
                             </li>
@@ -107,7 +107,7 @@
 
                             <!-- Data Scene -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center" id="sceneTable">
+                                <table class="table table-hover progress-table text-center conf" id="">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
@@ -121,9 +121,9 @@
                                         @php
                                             $num= 1;
                                         @endphp
-                                        @foreach($scenePage as $key => $item)
+                                        @foreach($scene as $item)
                                             <tr>
-                                                <th scope="row">{{$scenePage->firstItem() +$key}}</th>
+                                                <th scope="row">{{$num++}}</th>
                                                 <td>{{$item->title}}</td>
                                                 <td><img style="height: 70px" src="{{asset('/img/uploads/' . $item->image)}}"></td>
                                                 <td> 
@@ -183,7 +183,7 @@
                                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title">Edit {{$item->title}}</h5>
+                                                                        <h5 class="modal-title">Ubah {{$item->title}}</h5>
                                                                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                                                                     </div>
                                                                     <div class="modal-body">
@@ -240,10 +240,10 @@
                                                             <div class="modal-dialog modal-dialog-centered modal-confirm">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header flex-column">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                                         <div class="icon-box">
                                                                             <i class="fa fa-times-circle"></i>
-                                                                        </div>							
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                        </div>	
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <p>Apakah Anda Yakin Ingin Menghapus Data Ini? </p>
@@ -267,7 +267,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                {{ $scenePage->links() }}
                             </div>
                         </div>
 
@@ -348,7 +347,7 @@
 
                             <!-- Data Hotspot -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center" id="hotspotTable">
+                                <table class="table table-hover progress-table text-center conf" id="">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
@@ -363,9 +362,9 @@
                                         @php
                                             $num= 1;
                                         @endphp
-                                        @foreach ($hotspotPage as $number => $hotspot)
+                                        @foreach ($hotspots as $hotspot)
                                             <tr>
-                                                <th scope="row">{{$hotspotPage->firstItem() + $number}}</th>
+                                                <th scope="row">{{$num++}}</th>
                                                 @foreach ($scene as $scenes)
                                                     @if ($hotspot->sourceScene == $scenes->id)
                                                         <td>{{$scenes->title}}</td>
@@ -421,7 +420,7 @@
                                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title"> Edit Hotspot </h5>
+                                                                        <h5 class="modal-title"> Ubah Hotspot </h5>
                                                                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                                                                     </div>
                                                                     <div class="modal-body">
@@ -478,7 +477,7 @@
                         
                                                                             <div class="form-group">
                                                                                 <label for="text" class="d-flex justify-content-left">Text</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="text" id="text" name="text" value="{{$hotspot->info}}">
+                                                                                <textarea class="form-control form-control-lg input-rounded mb-4" id="text" name="text" required > {{$hotspot->info}} </textarea>
                                                                             </div>
                                                                             
                                                                             <div class="modal-footer">
@@ -499,10 +498,10 @@
                                                             <div class="modal-dialog modal-dialog-centered modal-confirm">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header flex-column">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                                         <div class="icon-box">
                                                                             <i class="fa fa-times-circle"></i>
                                                                         </div>							
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <p>Apakah Anda Yakin Ingin Menghapus Data Ini? </p>
@@ -526,8 +525,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
-                                {{ $hotspotPage->links() }}
                             </div>
                         </div>
                     </div>
@@ -539,16 +536,26 @@
 @endsection
 
 @push('script')
-    <script> 
-        function previewImage() {
-            document.getElementById("image-preview").style.display = "block";
-            var oFReader = new FileReader();
-            oFReader.readAsDataURL(document.getElementById("image").files[0]);
-        
-            oFReader.onload = function(oFREvent) {
-                document.getElementById("image-preview").src = oFREvent.target.result;
-            };
-        };
+
+    <script>
+        $(document).ready(function() {
+            $('table.conf').DataTable({
+                pageLength : 5,
+                lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Semua']],
+                "language": {
+                    "lengthMenu": "Menampilkan _MENU_ Data Per Halaman",
+                    "zeroRecords": "Data Tidak Ditemukan",
+                    "info": "Menampilkan Halaman _PAGE_ dari _PAGES_",
+                    "infoEmpty": "Data Tidak Ditemukan",
+                    "infoFiltered": "(Difitler dari _MAX_ total data)",
+                    "search": "Cari:",
+                    "paginate": {
+                        "next":       "Selanjutnya",
+                        "previous":   "Sebelumnya"
+                    }
+                }
+            });
+        } );
     </script>
 
     <script type="text/javascript">
@@ -565,13 +572,4 @@
             });
         });
     </script>
-
-<!-- Table Sorting -->
-<script src="{{asset('js/tablesort.min.js')}}"></script>
-<script src="{{asset('js/tablesort.number.js')}}"></script>
-
-<script>
-  new Tablesort(document.getElementById('sceneTable'));
-  new Tablesort(document.getElementById('hotspotTable'));
-</script>
 @endpush

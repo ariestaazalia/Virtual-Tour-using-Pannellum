@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
     <!-- Sorting -->
-    <link rel="stylesheet" href="{{asset('css/tablesort.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <!-- modernizr css -->
     <script src="{{asset('js/modernizr-2.8.3.min.js')}}"></script>
 </head>

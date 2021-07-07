@@ -27,10 +27,8 @@ class SceneController extends Controller
             ->join('scenes', 'scenes.id', '=', 'hotspots.targetScene')
             ->select('scenes.id', 'scenes.title', 'hotspots.targetScene')
             ->get();
-        $scenePage = Scene::paginate(5);
-        $hotspotPage = Hotspot::paginate(5);
         
-        return view('admin.config', compact('hotspots', 'scene', 'sourceScene', 'targetScene', 'scenePage', 'hotspotPage'));
+        return view('admin.config', compact('hotspots', 'scene', 'sourceScene', 'targetScene'));
     }
 
     public function pannellum() {
@@ -40,7 +38,6 @@ class SceneController extends Controller
             ->join('scenes', 'scenes.id', '=', 'hotspots.sourceScene')
             ->select('hotspots.*')
             ->get();
-
 
         return view('welcome', compact('fscene', 'scenes', 'hotspots'));
     }

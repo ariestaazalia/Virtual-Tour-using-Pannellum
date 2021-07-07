@@ -20,7 +20,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin', 'HomeController@index')->name('home');
     Route::get('/konfigurasi', 'SceneController@index')->name('config');
     Route::get('/profile', 'UserController@index')->name('profil');
+    Route::get('/ubahPassword', 'PasswordController@index')->name('ubahPassword');
 
+    Route::post('/changePassword', 'PasswordController@store')->name('changePassword');
     Route::post('/addScene', 'SceneController@store')->name('addScene');
     Route::post('/addHotspot', 'HotspotController@store')->name('addHotspot');
 

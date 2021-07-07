@@ -806,7 +806,7 @@ header .header-logo  {
   font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: .2rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(0, 0, 0);
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -840,7 +840,7 @@ header .header-logo  {
   display: block;
   height: 3px;
   width: 24px;
-  background-color: #FFFFFF;
+  background-color: #000000;
   position: absolute;
   top: 50%;
   right: 9px;
@@ -867,7 +867,7 @@ header .header-logo  {
  * ------------------------------------------------------------------- */
 #menu-nav-wrap {
   background: #0c0c0c;
-  color: rgba(255, 255, 255, 0.801);
+  color: rgb(3, 3, 3);
   font-size: 1.5rem;
   line-height: 1.6;
   padding: 3.6rem 3rem;
@@ -890,6 +890,7 @@ header .header-logo  {
   -ms-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
+
 #menu-nav-wrap a{
   color: rgba(255, 255, 255, 0.5);
 }
@@ -1060,13 +1061,13 @@ header .header-logo  {
   font-family: "montserrat-bold", serif;
   font-size: 8rem;
   line-height: 1.133;
-  color: rgb(209, 224, 214);
+  color: rgb(207, 201, 201);
 }
 .home-content-tablecell .more {
   margin: 4.8rem 0 0 0;
 }
 .home-content-tablecell .more .button {
-  color: #FFFFFF;
+  color: rgb(207, 201, 201);
 }
 
 .home-content-tablecell .more .button:hover{

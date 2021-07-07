@@ -118,6 +118,7 @@
     /* sidebar */
     .sidebar-menu {
         width: 365px;
+        overflow: hidden;
     }
     .nav-btn {
         position: fixed;

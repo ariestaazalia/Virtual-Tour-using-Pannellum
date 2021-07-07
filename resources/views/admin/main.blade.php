@@ -28,7 +28,8 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{Auth::user()->username}} <i class="ti-angle-down"></i> </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('profil') }}">Edit Profil</a>
+                                    <a class="dropdown-item" href="{{ route('profil') }}">Ubah Profil</a>
+                                    <a class="dropdown-item" href="{{ route('ubahPassword') }}">Ubah Password</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
@@ -51,7 +52,7 @@
         
         <footer>
             <div class="footer-area">
-                <p>© Copyright. Ariesta Salwa Azalia.</p>
+                <p>© Copyright. Fakultas Teknik Universitas Jenderal Soedirman.</p>
             </div>
         </footer>
     </div>
