@@ -40,9 +40,9 @@ class PasswordController extends Controller
 
         $update= User::find(Auth::user()->id)->update(['password'=> Hash::make($request->passwordBaru)]);
         if($update){
-            return redirect()->route('profil')->with('success','Anda Berhasil Mengubah Password');
+            return redirect()->route('ubahPassword')->with('success','Anda Berhasil Mengubah Password');
         }else{
-            return redirect()->route('profil')->with('error','Password Gagal Diubah');
+            return redirect()->route('ubahPassword')->with('error','Password Gagal Diubah');
         }
         
     }

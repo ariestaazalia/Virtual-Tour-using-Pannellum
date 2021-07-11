@@ -55,11 +55,9 @@
             <h3>Virtual Tour</h3>  
 
             <ul class="nav-list">
-                <li class="current"><a class="smoothscroll" href="#home" title="">Home</a></li>
-                <li><a class="smoothscroll" href="#about" title="">About</a></li>
-                <li><a class="smoothscroll" href="#services" title="">Services</a></li>
-                <li><a class="smoothscroll" href="#portfolio" title="">Works</a></li>
-                <li><a class="smoothscroll" href="#contact" title="">Contact</a></li>						
+                @foreach($scenes as $scene)
+                    <li><a class="smoothscroll" onclick="loadScene({{$scene->id}})" >{{$scene->title}}</a></li>
+                @endforeach					
             </ul>		
         </nav> 
     </header> 
@@ -92,7 +90,7 @@
     <script src="js/main.js"></script>
 
     <script>
-        pannellum.viewer('pannellum', {
+        var load = pannellum.viewer('pannellum', {
             "default": {
                 "firstScene": "{{$fscene->id}}",
                 "author": "Universitas Jenderal Soedirman",
@@ -124,5 +122,11 @@
             }
         });
     </script> 
+
+    <script>
+        function loadScene(clicked_id){
+            load.loadScene(clicked_id);
+        }
+    </script>
   </body>
 </html>

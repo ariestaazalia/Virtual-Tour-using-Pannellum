@@ -25,17 +25,28 @@
                         </div>
                     </div>
                 @endif
+
+                @if ($errors->has('username'))
+                    <div class="alert-dismiss">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{ $errors->first('username') }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span class="fa fa-times"></span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
                 
                     <div class="form-gp">
                         <label for="username">Username</label>
                         <input id="username" type="username" 
-                            name="username" value="{{ old('username') }}" required autocomplete="username">
+                            name="username" value="{{ old('username') }}" required>
                         <i class="ti-user"></i>
                         <div class="text-danger"></div>
                     </div>
                     <div class="form-gp">
                         <label for="password">Password</label>
-                        <input id="password" type="password" name="password" required autocomplete="current-password">
+                        <input id="password" type="password" name="password" required>
                         <i class="ti-lock"></i>
                         <div class="text-danger"></div>
                     </div>

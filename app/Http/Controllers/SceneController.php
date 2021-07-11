@@ -115,7 +115,11 @@ class SceneController extends Controller
         if ($scene) {
             return redirect()->route('config')->with('success', 'Scene Berhasil Diubah');
         }else {
-            return back()->withInput()->with(['error', 'Scene Gagal Ditambahkan']);
+            return Redirect::back()->withErrors(
+                [
+                    'title' => 'Judul Maksimal 255 Karakter',
+                ]
+            );
         }
     }
 

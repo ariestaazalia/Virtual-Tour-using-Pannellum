@@ -153,7 +153,7 @@
                                                                     <div class="modal-body">
                                                                         <img class="card-img-top img-fluid" src="{{asset('/img/uploads/' . $item->image)}}">
                                                                         <br> <br> <hr>
-                                                                        <h5>Info Panorama</h5><br>
+                                                                        <h5>Info {{$item->title}}</h5><br>
 
                                                                         <p class="d-flex justify-content-left"><b> Tipe: </b> {{ $item->type}} </p><br>
 

@@ -862,6 +862,10 @@ header .header-logo  {
   bottom: -9px;
 }
 
+#header-menu-trigger .header-menu-icon::hover {
+  color: #FFFFFF;
+}
+
 /* ------------------------------------------------------------------- 
  * off-canvas menu - (_layout.scss) 
  * ------------------------------------------------------------------- */
@@ -872,7 +876,7 @@ header .header-logo  {
   line-height: 1.6;
   padding: 3.6rem 3rem;
   height: 100%;
-  width: 240px;
+  width: 480px;
   position: fixed;
   right: 0;
   top: 0;
@@ -923,6 +927,7 @@ header .header-logo  {
 #menu-nav-wrap .nav-list li a:hover, 
 #menu-nav-wrap .nav-list li a:focus {
   color: white;
+  cursor: pointer;
 }
 #menu-nav-wrap .header-social-list {
   list-style: none;
