@@ -862,10 +862,6 @@ header .header-logo  {
   bottom: -9px;
 }
 
-#header-menu-trigger .header-menu-icon::hover {
-  color: #FFFFFF;
-}
-
 /* ------------------------------------------------------------------- 
  * off-canvas menu - (_layout.scss) 
  * ------------------------------------------------------------------- */
