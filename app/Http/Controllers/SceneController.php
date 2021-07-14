@@ -76,7 +76,7 @@ class SceneController extends Controller
         if ($scene) {
             return redirect()->route('config')->with('success', 'Scene Berhasil Ditambahkan');
         }else {
-            return back()->withInput()->with(['error', 'Scene Gagal Ditambahkan']);
+            return back()->withErrors('error', 'Scene Gagal Ditambahkan');
         }
     }
 
