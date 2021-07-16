@@ -135,7 +135,7 @@
 
 .slimScrollBar {
     background: #fff!important;
-    opacity: 0.1!important;
+    opacity: 0!important;
 }
 
 .sidebar-header {
@@ -1863,17 +1863,6 @@ p.card-text {
 
 /*-------------------- END Modal ------------------- */
 
-
-/*-------------------- 16. Pagination ------------------- */
-
-.pg-color-border li a {
-    border-color: #007BFF;
-}
-
-.pagination li a {
-    font-family: 'lato', sans-serif;
-}
-
 /*-------------------- END Pagination ------------------- */
 
 
@@ -2070,98 +2059,6 @@ table tr td [class^="ti-"] {
 /*-------------------- END Table Basic ------------------- */
 
 
-/*-------------------- 20. Datatable ------------------- */
-
-div.dataTables_wrapper div.dataTables_length select {
-    width: 76px;
-    margin: 0 10px;
-}
-
-/* datatable-primary */
-
-.datatable-primary thead {
-    background: #4336fb;
-    color: #fff;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    border: none;
-    background: transparent;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    padding: 0;
-    border: none;
-    margin-top: 20px;
-}
-
-table.dataTable.no-footer {
-    border-bottom: 1px solid rgba(120, 130, 140, 0.13) !important;
-}
-
-table.dataTable thead th,
-table.dataTable thead td {
-    border-bottom-color: transparent;
-}
-
-.datatable-primary .dataTables_paginate .page-item.active .page-link,
-.datatable-primary .dataTables_paginate .page-item .page-link:hover {
-    background-color: #4336fb;
-    border-color: #4336fb;
-    color: #fff;
-}
-
-.datatable-primary .dataTables_paginate .page-link {
-    color: #4336fb;
-    border: 1px solid #4336fb;
-}
-
-.datatable-primary .dataTables_paginate .paginate_button.disabled,
-.datatable-primary .dataTables_paginate .paginate_button.disabled:hover,
-.datatable-primary .dataTables_paginate .paginate_button.disabled:active {
-    color: #4336fb!important;
-    border: none;
-}
-
-.datatable-primary .dataTables_paginate .page-item.disabled .page-link {
-    color: #9f98f7;
-    background-color: #f9f9f9;
-    border-color: #c9c6f5;
-}
-
-
-
-/* datatable-dark */
-
-.datatable-dark thead {
-    background: #444;
-    color: #fff;
-}
-
-.datatable-dark .dataTables_paginate .page-item.active .page-link,
-.datatable-dark .dataTables_paginate .page-item .page-link:hover {
-    background-color: #444;
-    border-color: #444;
-    color: #fff;
-}
-
-.datatable-dark .dataTables_paginate .page-link {
-    color: #444;
-    border: 1px solid #444;
-}
-
-.datatable-dark .dataTables_paginate .paginate_button.disabled,
-.datatable-dark .dataTables_paginate .paginate_button.disabled:hover,
-.datatable-dark .dataTables_paginate .paginate_button.disabled:active {
-    color: #444!important;
-    border: none;
-}
-
-.datatable-dark .dataTables_paginate .page-item.disabled .page-link {
-    color: #999;
-    background-color: #f9f9f9;
-    border-color: #999;
-}
 
 /*-------------------- END Datatable ------------------- */
 
@@ -2181,85 +2078,6 @@ table.dataTable thead td {
     height: 600px;
 }
 
-/*-------------------- END Map Start ------------------- */
-
-/*-------------------- 22. Invoice ------------------- */
-
-.invoice-head {
-    margin-bottom: 30px;
-    border-bottom: 1px solid #efebeb;
-    padding-bottom: 20px;
-}
-
-.invoice-head .iv-left span {
-    color: #444;
-}
-
-.invoice-head span {
-    font-size: 21px;
-    font-weight: 700;
-    color: #777;
-}
-
-.invoice-address h3 {
-    font-size: 24px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.invoice-address h5 {
-    font-size: 17px;
-    margin-bottom: 10px;
-}
-
-.invoice-address p {
-    font-size: 15px;
-    color: #555;
-}
-
-.invoice-date li {
-    font-size: 15px;
-    color: #555;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-.invoice-table .table-bordered td,
-.invoice-table .table-bordered th {
-    border: 1px solid rgba(120, 130, 140, 0.13) !important;
-    border-left: none!important;
-    border-right: none!important;
-}
-
-.invoice-table tr td {
-    color: #666;
-}
-
-.invoice-table tfoot tr td {
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #444;
-}
-
-.invoice-buttons a {
-    display: inline-block;
-    font-size: 15px;
-    color: #fff;
-    background: #815ef6;
-    padding: 12px 19px;
-    border-radius: 3px;
-    text-transform: capitalize;
-    font-family: 'Lato', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    margin-left: 6px;
-}
-
-.invoice-buttons a:hover {
-    background: #574494;
-}
 
 /*-------------------- END Invoice ------------------- */
 
@@ -2338,13 +2156,6 @@ table.dataTable thead td {
     border-bottom: 1px solid #e6e6e6;
 }
 
-.form-gp input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active  {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
-}
-
 .form-gp input::-webkit-input-placeholder {
     color: #dad7d7;
 }
@@ -2366,10 +2177,6 @@ input:-webkit-autofill:active  {
     right: 5px;
     color: #7e74ff;
     font-size: 16px;
-}
-
-.form-gp.has-error, .form-gp.has-error label, .form-gp.has-error input, .form-gp.has-error input::placeholder, .form-gp.has-error i {
-    color: var(--red);
 }
 
 .rmber-area {

@@ -3,10 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    @if ($message = Session::get('success'))
+    @if ($message = Session::has('success'))
         <div class="alert-dismiss">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>{{ $message }}</strong>
+                <strong>{{ Session::get('success') }}</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span class="fa fa-times"></span>
                 </button>
@@ -26,7 +26,7 @@
                         <h2> {{ $jumlahScene->count() }} </h2>
                     </div>
                 </div>
-                <canvas id="coin_sales1" height="50"></canvas>
+                <canvas height="50"></canvas>
             </div>
         </div>
         <div class="col-md-6">
@@ -40,7 +40,7 @@
                         <h2>{{ $jumlahHotspot->count() }}</h2>
                     </div>
                 </div>
-                <canvas id="coin_sales2" height="50"></canvas>
+                <canvas height="50"></canvas>
             </div>
         </div>
     </div>

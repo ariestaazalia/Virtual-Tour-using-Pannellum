@@ -14,15 +14,17 @@
     </div>
 @endif
 
-@if ($message = Session::get('error'))
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
     <div class="alert-dismiss">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>{{ $message }}</strong>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ $error }}</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span class="fa fa-times"></span>
             </button>
         </div>
     </div>
+    @endforeach
 @endif
 
 <div class="container rounded bg-white mt-5">
@@ -46,15 +48,15 @@
 
                     <div>
                         <br><label for="passwordLama">Password Lama:</label><br>
-                        <div class="col-md-8"><input type="password" class="form-control" name="passwordLama" required></div>
+                        <div class="col-md-8"><input type="password" class="form-control" minlength="8" name="passwordLama" required></div>
                     </div><br>
                     <div>
                         <label for="passwordBaru">Password Baru:</label><br>
-                        <div class="col-md-8"><input type="password" class="form-control" name="passwordBaru" required></div>
+                        <div class="col-md-8"><input type="password" class="form-control" minlength="8" name="passwordBaru" required></div>
                     </div><br>
                     <div>
                         <label for="konfirmasiPasswordBaru">Konfirmasi Password Baru: </label><br>
-                        <div class="col-md-8"><input type="password" class="form-control" name="konfirmasiPasswordBaru" required></div>
+                        <div class="col-md-8"><input type="password" class="form-control" minlength="8" name="konfirmasiPasswordBaru" required></div>
                     </div>
                     <div class="mt-5 text-right">
                         <button class="btn btn-primary profile-button" type="submit">Ubah</button>

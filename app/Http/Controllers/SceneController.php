@@ -53,9 +53,9 @@ class SceneController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'type' => 'required',
-            'hfov' => 'required',
-            'yaw' => 'required',
-            'pitch' => 'required',
+            'hfov' => ['required', 'between:-360,360'],
+            'yaw' => ['required', 'between:-360,360'],
+            'pitch' => ['required', 'between:-360,360'],
             'image' => 'required|image'
         ]);
 
@@ -64,7 +64,7 @@ class SceneController extends Controller
         $file_name = time() . '.' . $extension;
         $file->move(public_path('img/uploads'), $file_name);
         
-        $scene = Scene::create([
+        Scene::create([
             'title' => $request['title'],
             'type' => $request['type'],
             'hfov' => $request['hfov'],
@@ -73,11 +73,7 @@ class SceneController extends Controller
             'image' => $file_name
         ]);
         
-        if ($scene) {
-            return redirect()->route('config')->with('success', 'Scene Berhasil Ditambahkan');
-        }else {
-            return back()->withErrors('error', 'Scene Gagal Ditambahkan');
-        }
+        return redirect()->route('config')->with('success', 'Scene Berhasil Ditambahkan');
     }
 
     /**
@@ -94,6 +90,16 @@ class SceneController extends Controller
 
     public function update(Request $request, $id){
         $scene = Scene::find($id); 
+
+        $request->validate([
+            'title' => 'required|max:255',
+            'type' => 'required',
+            'hfov' => ['required', 'between:-360,360'],
+            'yaw' => ['required', 'between:-360,360'],
+            'pitch' => ['required', 'between:-360,360'],
+            'image' => 'required|image'
+        ]);
+
         $file = $request->file('image');
         if ($file == '') {
             $file_name=$scene->image;
@@ -103,7 +109,7 @@ class SceneController extends Controller
             $file->move(public_path('img/uploads'), $file_name);
         }
 
-        $scene = Scene::where('id',$id)->update([
+        Scene::where('id',$id)->update([
             'title' => $request['title'],
             'type' => $request['type'],
             'hfov' => $request['hfov'],
@@ -112,15 +118,7 @@ class SceneController extends Controller
             'image' => $file_name
         ]);
         
-        if ($scene) {
-            return redirect()->route('config')->with('success', 'Scene Berhasil Diubah');
-        }else {
-            return Redirect::back()->withErrors(
-                [
-                    'title' => 'Judul Maksimal 255 Karakter',
-                ]
-            );
-        }
+        return redirect()->route('config')->with('success', 'Scene Berhasil Diubah');
     }
 
     public function status(Request $request, $id){
@@ -129,12 +127,8 @@ class SceneController extends Controller
         $updated = Scene::where('id',$id)->update([
             'status' => $request['check']
         ]);
-        
-        if ($updated) {
-            return redirect()->route('config')->with('success', 'Scene Utama Berhasil Diubah');
-        }else {
-            return back()->withInput()->with(['error', 'Scene Utama Gagal Diubah']);
-        }
+
+        return redirect()->route('config')->with('success', 'Scene Utama Berhasil Diubah');
     }
     /**
      * Remove the specified resource from storage.

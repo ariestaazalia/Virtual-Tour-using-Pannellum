@@ -33,17 +33,14 @@ class PasswordController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'passwordLama' => ['required', new MatchOldPassword],
-            'passwordBaru' => ['required'],
-            'konfirmasiPasswordBaru' => ['same:passwordBaru'],
+            'passwordLama' => ['required', 'min:8', new MatchOldPassword],
+            'passwordBaru' => ['required', 'min:8'],
+            'konfirmasiPasswordBaru' => ['same:passwordBaru', 'min:8'],
         ]);
 
-        $update= User::find(Auth::user()->id)->update(['password'=> Hash::make($request->passwordBaru)]);
-        if($update){
-            return redirect()->route('ubahPassword')->with('success','Anda Berhasil Mengubah Password');
-        }else{
-            return redirect()->route('ubahPassword')->with('error','Password Gagal Diubah');
-        }
+        User::find(Auth::user()->id)->update(['password'=> Hash::make($request->passwordBaru)]);
+        
+        return redirect()->route('ubahPassword')->with('success','Anda Berhasil Mengubah Password');
         
     }
 }

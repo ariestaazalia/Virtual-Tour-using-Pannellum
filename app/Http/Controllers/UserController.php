@@ -29,6 +29,11 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users']
+        ]);
+
         User::where('id', $id)->update([
             'name'=>$request['name'],
             'username'=>$request['username']

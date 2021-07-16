@@ -14,17 +14,6 @@
     </div>
 @endif
 
-@if ($message = Session::get('error'))
-    <div class="alert-dismiss">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{ $message }}</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span class="fa fa-times"></span>
-            </button>
-        </div>
-    </div>
-@endif
-
 <div class="row">
     <div class="col-lg-12 mt-sm-30 mt-xs-30">
         <div class="card">
@@ -60,6 +49,18 @@
                                             <div class="modal-body">
                                                 <form action="{{ route('addScene') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
+                                                    @if ($errors->any())
+                                                        @foreach ($errors->all() as $error)
+                                                        <div class="alert-dismiss">
+                                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                                <strong>{{ $error }}</strong>
+                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span class="fa fa-times"></span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                    @endif
 
                                                     <div class="form-group">
                                                         <label for="title">Judul Scene</label>
@@ -77,19 +78,19 @@
 
                                                     <div class="form-group">
                                                         <label for="yaw">Yaw</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="yaw" step="0.1" name="yaw" min="0" max="180" value="0" required>
+                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="yaw" step="0.1" name="yaw" min="-360" max="360" value="0" required>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="pitch">Pitch</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="pitch" step="0.1" name="pitch" min="0" max="180" value="0" required>
+                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="pitch" step="0.1" name="pitch" min="-360" max="360" value="0" required>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="image">Gambar</label>
                                                         <img class="card-img-top img-fluid" id="image-preview" alt="Image Preview"/>
                                                         <div class="custom-file">
-                                                            <input type="file" class="form-control-file" id="image" name="image" required onchange="previewImage()" accept="image/*">
+                                                            <input type="file" class="form-control-file" id="image-upload" name="image" required onchange="previewImage()" accept="image/*">
                                                         </div>
                                                     </div>
 
@@ -107,7 +108,7 @@
 
                             <!-- Data Scene -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center conf" id="">
+                                <table class="table table-hover progress-table text-center configTable" id="">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
@@ -191,6 +192,19 @@
                                                                             @csrf
                                                                             @method('PUT')
 
+                                                                            @if ($errors->any())
+                                                                                @foreach ($errors->all() as $error)
+                                                                                <div class="alert-dismiss">
+                                                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                                                        <strong>{{ $error }}</strong>
+                                                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                                            <span class="fa fa-times"></span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                @endforeach
+                                                                            @endif
+
                                                                             <div class="form-group">
                                                                                 <label for="title" class="d-flex justify-content-left">Judul Scene</label>
                                                                                 <input class="form-control form-control-lg input-rounded mb-4" type="text" id="title" name="title" required value="{{$item->title}}">
@@ -207,12 +221,12 @@
                         
                                                                             <div class="form-group">
                                                                                 <label for="yaw" class=" d-flex justify-content-left">Yaw</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="yaw" name="yaw" min="0" max="180" value="{{$item->yaw}}" required>
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="yaw" name="yaw" min="-360" max="360" value="{{$item->yaw}}" required>
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="pitch" class=" d-flex justify-content-left">Pitch</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="pitch" name="pitch" min="0" max="180" value="{{$item->pitch}}" required>
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="pitch" name="pitch" min="-360" max="360" value="{{$item->pitch}}" required>
                                                                             </div>
                         
                                                                             <div class="form-group">
@@ -286,6 +300,19 @@
                                                 <form action="{{ route('addHotspot') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
 
+                                                    @if ($errors->any())
+                                                        @foreach ($errors->all() as $error)
+                                                        <div class="alert-dismiss">
+                                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                                <strong>{{ $error }}</strong>
+                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span class="fa fa-times"></span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                    @endif
+
                                                     <div class="form-group">
                                                         <label for="sourceScene">Asal Scene</label>
                                                         <select class="form-control form-control-lg input-rounded mb-4" name="sourceScene" required>
@@ -331,7 +358,7 @@
 
                                                     <div class="form-group">
                                                         <label for="text">Informasi</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" required type="text" id="text" name="text">
+                                                        <textarea class="form-control form-control-lg input-rounded mb-4" required type="text" id="text" name="text"></textarea>
                                                     </div>
 
                                                     <div class="modal-footer">
@@ -347,7 +374,7 @@
 
                             <!-- Data Hotspot -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center conf" id="">
+                                <table class="table table-hover progress-table text-center configTable" id="">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
@@ -427,6 +454,19 @@
                                                                         <form method="POST" action="{{ route('editHotspot', ['id' => $hotspot->id]) }}"> 
                                                                             @csrf
                                                                             @method('PUT')
+
+                                                                            @if ($errors->any())
+                                                                                @foreach ($errors->all() as $error)
+                                                                                <div class="alert-dismiss">
+                                                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                                                        <strong>{{ $error }}</strong>
+                                                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                                            <span class="fa fa-times"></span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                @endforeach
+                                                                            @endif
                                                                             
                                                                             <div class="form-group">
                                                                                 <label for="sourceScene" class="d-flex justify-content-left">Asal Scene</label>
@@ -536,10 +576,20 @@
 @endsection
 
 @push('script')
+    <script type="text/javascript">
+        function previewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("image-upload").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("image-preview").src = oFREvent.target.result;
+            };
+        };
+    </script>
 
     <script>
         $(document).ready(function() {
-            $('table.conf').DataTable({
+            $('table.configTable').DataTable({
                 pageLength : 5,
                 lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Semua']],
                 "language": {
@@ -547,7 +597,7 @@
                     "zeroRecords": "Data Tidak Ditemukan",
                     "info": "Menampilkan Halaman _PAGE_ dari _PAGES_",
                     "infoEmpty": "Data Tidak Ditemukan",
-                    "infoFiltered": "(Difitler dari _MAX_ total data)",
+                    "infoFiltered": "(Difilter dari _MAX_ total data)",
                     "search": "Cari:",
                     "paginate": {
                         "next":       "Selanjutnya",
@@ -571,5 +621,11 @@
                 }
             });
         });
+    </script>
+
+    <script type="text/javascript">
+        @if (count($errors) > 0)
+            document.querySelectorAll('#addScene', '#addHotspot', '#editModal{{$item['id']}}', '#editHotspot{{$hotspot['id']}}').modal('show');
+        @endif
     </script>
 @endpush

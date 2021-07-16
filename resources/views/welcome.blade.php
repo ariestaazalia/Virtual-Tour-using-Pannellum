@@ -67,7 +67,10 @@
         <div class="home-content-tablecell">
             <div class="row">
                 <div class="col-twelve">		   			
-                    <h1 class="animate-intro"> Virtual Tour Fakultas Teknik Universitas Jenderal Soedirman </h1>	
+                    <h1 class="animate-intro"> Virtual Tour Fakultas Teknik Universitas Jenderal Soedirman </h1>
+                    <noscript>
+                        <div id="warning"><strong>Mohon Aktifkan JavaScript di Browser Anda untuk Menggunakan Website ini<strong></div>
+                    </noscript>	
                     <div class="more animate-intro">
                         <a id="hide" class="button stroke"> Start Tour </a>
                     </div>							

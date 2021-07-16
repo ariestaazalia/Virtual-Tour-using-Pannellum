@@ -19,8 +19,8 @@ class HotspotController extends Controller
             'sourceScene' => 'required',
             'targetScene' => 'required',
             'type' => 'required',
-            'yaw' => 'required',
-            'pitch' => 'required',
+            'yaw' => ['required', 'between:-360,360'],
+            'pitch' => ['required', 'between:-360,360'],
             'text' => 'required'
         ]);
         
@@ -49,8 +49,8 @@ class HotspotController extends Controller
             'sourceScene' => 'required',
             'targetScene' => 'required',
             'type' => 'required',
-            'yaw' => 'required',
-            'pitch' => 'required',
+            'yaw' => ['required', 'between:-360,360'],
+            'pitch' => ['required', 'between:-360,360'],
             'text' => 'required'
         ]);
 
@@ -63,7 +63,7 @@ class HotspotController extends Controller
             'targetScene' => $request['targetScene']
         ]);
         
-        return redirect()->route('config')->with(['success' => 'Hotspot Berhasil Diubah'])->withInput(['tab'=>'hotspot']);
+        return redirect()->route('config')->with(['success' => 'Hotspot Berhasil Diubah']);
     }
 
     /**

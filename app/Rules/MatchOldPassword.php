@@ -37,6 +37,6 @@ class MatchOldPassword implements Rule
      */
     public function message()
     {
-        return 'Password Cocok';
+        return 'Password lama Tidak Cocok';
     }
 }

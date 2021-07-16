@@ -16,5 +16,6 @@
     <!-- Sorting -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <!-- modernizr css -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="{{asset('js/modernizr-2.8.3.min.js')}}"></script>
 </head>

@@ -26,13 +26,10 @@
                     </div>
                 @endif
 
-                @if ($errors->has('username'))
+                @if ($errors->any())
                     <div class="alert-dismiss">
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>{{ $errors->first('username') }}</strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span class="fa fa-times"></span>
-                            </button>
+                        <div class="alert alert-danger" role="alert">
+                            <strong>{{ $errors->first() }}</strong>
                         </div>
                     </div>
                 @endif
