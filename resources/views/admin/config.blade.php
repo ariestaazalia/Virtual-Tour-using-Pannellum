@@ -18,16 +18,12 @@
     <div class="col-lg-12 mt-sm-30 mt-xs-30">
         <div class="card">
             <div class="card-body">
-                <!-- Tab -->
+                <!-- Tab Name -->
                 <div class="d-flex justify-content-center">
                     <div class="trd-history-tabs">
                         <ul class="nav" role="tablist" id="TabMenu">
-                            <li>
-                                <a class="active" data-toggle="tab" href="#scene" role="tab">Scene</a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#hotspot" role="tab">Hotspot</a>
-                            </li>
+                            <li><a class="active" data-toggle="tab" href="#scene" role="tab">Scene</a></li>
+                            <li><a data-toggle="tab" href="#hotspot" role="tab">Hotspot</a></li>
                         </ul>
                     </div>
                 </div>
@@ -108,7 +104,7 @@
 
                             <!-- Data Scene -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center configTable" id="">
+                                <table class="table table-hover text-center" style="width:100%">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
@@ -374,7 +370,7 @@
 
                             <!-- Data Hotspot -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center configTable" id="">
+                                <table class="table table-hover text-center" style="width:100%">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
@@ -589,7 +585,8 @@
 
     <script>
         $(document).ready(function() {
-            $('table.configTable').DataTable({
+            $('table.table').DataTable({
+                responsive: true,
                 pageLength : 5,
                 lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Semua']],
                 "language": {
@@ -605,7 +602,10 @@
                     }
                 }
             });
-        } );
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                $($.fn.dataTable.tables(true)).DataTable().columns.adjust().responsive.recalc();
+            });
+        } ); 
     </script>
 
     <script type="text/javascript">

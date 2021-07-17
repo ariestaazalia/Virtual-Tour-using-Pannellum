@@ -52,12 +52,16 @@
         
         <footer>
             <div class="footer-area">
-                <p>© Copyright. Fakultas Teknik Universitas Jenderal Soedirman.</p>
+                <p>© Copyright <span id="year"></span>. Fakultas Teknik Universitas Jenderal Soedirman.</p>
             </div>
         </footer>
     </div>
     
     @include('admin.layouts.scripts')
+
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
     @stack('script')
 </body>
 </html>

@@ -21,7 +21,7 @@ class PasswordController extends Controller
      */
     public function index()
     {
-        return view('admin.changepass');
+        return view('auth.changepass');
     }
 
     /**
