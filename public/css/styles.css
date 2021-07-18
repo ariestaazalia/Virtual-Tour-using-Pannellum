@@ -1473,6 +1473,26 @@ table tr td [class^="ti-"] {
 
 /*-------------------- END Login ------------------- */
 
+/* Tabs in Config */
+
+.trd-history-tabs ul li a {
+    font-size: 15px;
+    font-weight: 500;
+    color: #b0b0b0;
+    letter-spacing: 0;
+    margin: 0 15px;
+    display: block;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 7px;
+}
+
+.trd-history-tabs ul li a:hover,
+.trd-history-tabs ul li a.active {
+    border-bottom: 2px solid #731ffd;
+    padding-bottom: 7px;
+    color: #565656;
+}
+
 /*-------------------- 26. Offset Sidebar ------------------- */
 
 .offset-area {
