@@ -212,22 +212,21 @@
                         
                                                                             <div class="form-group">
                                                                                 <label for="hfov" class=" d-flex justify-content-left">Hfov</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" name="hfov" min="-360" max="360" value="{{$item->hfov}}" required>
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="hfov" min="-360" max="360" value="{{$item->hfov}}" required>
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="yaw" class=" d-flex justify-content-left">Yaw</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" name="yaw" min="-360" max="360" value="{{$item->yaw}}" required>
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="yaw" min="-360" max="360" value="{{$item->yaw}}" required>
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="pitch" class=" d-flex justify-content-left">Pitch</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" name="pitch" min="-360" max="360" value="{{$item->pitch}}" required>
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="pitch" min="-360" max="360" value="{{$item->pitch}}" required>
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="image" class=" d-flex justify-content-left">Image</label>
-                                                                                <img class="card-img-top img-fluid" src="{{asset('/img/uploads/' . $item->image)}}">
                                                                                 <div class="custom-file">
                                                                                     <input type="file" class="form-control-file" name="image" accept="image/*">
                                                                                 </div>
@@ -503,12 +502,12 @@
                         
                                                                             <div class="form-group">
                                                                                 <label for="yaw" class="d-flex justify-content-left">Yaw</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" name="yaw" min="-360" max="360" value="{{$hotspot->yaw}}">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" name="yaw" min="-360" max="360" value="{{$hotspot->yaw}}">
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="pitch" class="d-flex justify-content-left">Pitch</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" name="pitch" min="-360" max="360" value="{{$hotspot->pitch}}">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" name="pitch" min="-360" max="360" value="{{$hotspot->pitch}}">
                                                                             </div>
                         
                                                                             <div class="form-group">
