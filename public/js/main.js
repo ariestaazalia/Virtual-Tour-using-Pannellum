@@ -63,19 +63,6 @@
 		});
 	};
 
-
-	/*	Light Gallery
-	------------------------------------------------------- */
-	var ssLightGallery = function() {
-
-		$('#folio-wrap').lightGallery({  
-			showThumbByDefault: false,
-			hash: false,
-			selector: ".item-wrap"		
-		});
-	};
-
-
 	/* Flexslider
   	* ------------------------------------------------------ */
   	var ssFlexSlider = function() {
@@ -196,9 +183,7 @@
 		 	e.preventDefault();
 		 	e.stopPropagation();	   	
 
-	    	$('html, body').stop().animate({
-	       	'scrollTop': $target.offset().top
-	      }, cfg.scrollDuration, 'swing').promise().done(function () {
+	    	$('html, body').stop().animate( cfg.scrollDuration, 'swing').promise().done(function () {
 
 	      	// check if menu is open
 	      	if ($('body').hasClass('menu-is-open')) {
@@ -406,7 +391,6 @@
 		ssPreloader();
 		ssFitVids();
 		ssMasonryFolio();
-		ssLightGallery();
 		ssFlexSlider();
 		ssOwlCarousel();
 		ssMenuOnScrolldown();

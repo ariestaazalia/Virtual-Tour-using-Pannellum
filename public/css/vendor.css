@@ -3276,55 +3276,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   cursor: pointer;
 }
 
-.lg-outer .lg-has-vimeo .lg-video-play {
-  background: url("../images/lightgallery/vimeo-play.png") no-repeat scroll 0 0 transparent;
-}
-
-.lg-outer .lg-has-vimeo:hover .lg-video-play {
-  background: url("../images/lightgallery/vimeo-play.png") no-repeat scroll 0 -58px transparent;
-}
-
-.lg-outer .lg-has-html5 .lg-video-play {
-  background: transparent url("../images/lightgallery/video-play.png") no-repeat scroll 0 0;
-  height: 64px;
-  margin-left: -32px;
-  margin-top: -32px;
-  width: 64px;
-  opacity: 0.8;
-}
-
-.lg-outer .lg-has-html5:hover .lg-video-play {
-  opacity: 1;
-}
-
-.lg-outer .lg-has-youtube .lg-video-play {
-  background: url("../images/lightgallery/youtube-play.png") no-repeat scroll 0 0 transparent;
-}
-
-.lg-outer .lg-has-youtube:hover .lg-video-play {
-  background: url("../images/lightgallery/youtube-play.png") no-repeat scroll 0 -60px transparent;
-}
-
-.lg-outer .lg-video-object {
-  width: 100% !important;
-  height: 100% !important;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.lg-outer .lg-has-video .lg-video-object {
-  visibility: hidden;
-}
-
-.lg-outer .lg-has-video.lg-video-playing .lg-object, .lg-outer .lg-has-video.lg-video-playing .lg-video-play {
-  display: none;
-}
-
-.lg-outer .lg-has-video.lg-video-playing .lg-video-object {
-  visibility: visible;
-}
-
 .lg-progress-bar {
   background-color: #333;
   height: 5px;
@@ -3784,7 +3735,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   transition: left 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 0.1s ease 0s;
 }
 
-/*# sourceMappingURL=lightgallery.css.map */
 /**
  * 03.
  * Owl Carousel v2.2.0

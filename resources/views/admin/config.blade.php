@@ -22,12 +22,8 @@
                 <div class="d-flex justify-content-center">
                     <div class="trd-history-tabs">
                         <ul class="nav" role="tablist" id="TabMenu">
-                            <li>
-                                <a class="active" data-toggle="tab" href="#scene" role="tab">Scene</a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#hotspot" role="tab">Hotspot</a>
-                            </li>
+                            <li><a class="active" data-toggle="tab" href="#scene" role="tab">Scene</a></li>
+                            <li><a data-toggle="tab" href="#hotspot" role="tab">Hotspot</a></li>
                         </ul>
                     </div>
                 </div>
@@ -64,26 +60,26 @@
 
                                                     <div class="form-group">
                                                         <label for="title">Judul Scene</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="text" id="title" name="title" required>
+                                                        <input class="form-control form-control-lg input-rounded mb-4" type="text" name="title" required>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="hidden" id="type" name="type" value="equirectangular">
+                                                        <input class="form-control form-control-lg input-rounded mb-4" type="hidden" name="type" value="equirectangular">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="hfov">Hfov</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="hfov" step="0.1" name="hfov" min="-360" max="360" value="100" required>
+                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="hfov" min="-360" max="360" value="100" required>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="yaw">Yaw</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="yaw" step="0.1" name="yaw" min="-360" max="360" value="0" required>
+                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="yaw" min="-360" max="360" value="0" required>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="pitch">Pitch</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" id="pitch" step="0.1" name="pitch" min="-360" max="360" value="0" required>
+                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="pitch" min="-360" max="360" value="0" required>
                                                     </div>
 
                                                     <div class="form-group">
@@ -108,7 +104,7 @@
 
                             <!-- Data Scene -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center configTable" id="">
+                                <table class="table table-hover progress-table text-center configTable">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
@@ -207,33 +203,33 @@
 
                                                                             <div class="form-group">
                                                                                 <label for="title" class="d-flex justify-content-left">Judul Scene</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="text" id="title" name="title" required value="{{$item->title}}">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="text" name="title" required value="{{$item->title}}">
                                                                             </div>
                         
                                                                             <div class="form-group">
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="hidden" id="type" name="type" value="{{$item->type}}">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="hidden" name="type" value="{{$item->type}}">
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="hfov" class=" d-flex justify-content-left">Hfov</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="hfov" name="hfov" min="-360" max="360" value="{{$item->hfov}}" required>
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" name="hfov" min="-360" max="360" value="{{$item->hfov}}" required>
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="yaw" class=" d-flex justify-content-left">Yaw</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="yaw" name="yaw" min="-360" max="360" value="{{$item->yaw}}" required>
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" name="yaw" min="-360" max="360" value="{{$item->yaw}}" required>
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="pitch" class=" d-flex justify-content-left">Pitch</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" id="pitch" name="pitch" min="-360" max="360" value="{{$item->pitch}}" required>
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" name="pitch" min="-360" max="360" value="{{$item->pitch}}" required>
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="image" class=" d-flex justify-content-left">Image</label>
                                                                                 <img class="card-img-top img-fluid" src="{{asset('/img/uploads/' . $item->image)}}">
                                                                                 <div class="custom-file">
-                                                                                    <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+                                                                                    <input type="file" class="form-control-file" name="image" accept="image/*">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="modal-footer">
@@ -348,17 +344,17 @@
 
                                                     <div class="form-group">
                                                         <label for="yaw">Yaw</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" id="yaw" name="yaw" min="-360" max="360" value="0">
+                                                        <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" name="yaw" min="-360" max="360" value="0">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="pitch">Pitch</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" id="pitch" name="pitch" min="-360" max="360" value="0">
+                                                        <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" name="pitch" min="-360" max="360" value="0">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="text">Informasi</label>
-                                                        <textarea class="form-control form-control-lg input-rounded mb-4" required type="text" id="text" name="text"></textarea>
+                                                        <textarea class="form-control form-control-lg input-rounded mb-4" required type="text" name="text"></textarea>
                                                     </div>
 
                                                     <div class="modal-footer">
@@ -374,7 +370,7 @@
 
                             <!-- Data Hotspot -->
                             <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center configTable" id="">
+                                <table class="table table-hover progress-table text-center configTable">
                                     <thead class="text-uppercase">
                                         <tr>
                                             <th scope="col">No.</th>
@@ -507,17 +503,17 @@
                         
                                                                             <div class="form-group">
                                                                                 <label for="yaw" class="d-flex justify-content-left">Yaw</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" id="yaw" name="yaw" min="-360" max="360" value="{{$hotspot->yaw}}">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" name="yaw" min="-360" max="360" value="{{$hotspot->yaw}}">
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="pitch" class="d-flex justify-content-left">Pitch</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" id="pitch" name="pitch" min="-360" max="360" value="{{$hotspot->pitch}}">
+                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" name="pitch" min="-360" max="360" value="{{$hotspot->pitch}}">
                                                                             </div>
                         
                                                                             <div class="form-group">
                                                                                 <label for="text" class="d-flex justify-content-left">Text</label>
-                                                                                <textarea class="form-control form-control-lg input-rounded mb-4" id="text" name="text" required > {{$hotspot->info}} </textarea>
+                                                                                <textarea class="form-control form-control-lg input-rounded mb-4" name="text" required > {{$hotspot->info}} </textarea>
                                                                             </div>
                                                                             
                                                                             <div class="modal-footer">
@@ -576,7 +572,7 @@
 @endsection
 
 @push('script')
-    <script type="text/javascript">
+    <script>
         function previewImage() {
             var oFReader = new FileReader();
             oFReader.readAsDataURL(document.getElementById("image-upload").files[0]);
@@ -589,7 +585,7 @@
 
     <script>
         $(document).ready(function() {
-            $('table.configTable').DataTable({
+            $('.configTable').DataTable({
                 pageLength : 5,
                 lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Semua']],
                 "language": {

@@ -19,8 +19,8 @@ class HotspotController extends Controller
             'sourceScene' => 'required',
             'targetScene' => 'required',
             'type' => 'required',
-            'yaw' => ['required', 'between:-360,360'],
-            'pitch' => ['required', 'between:-360,360'],
+            'yaw' => 'required|min:-360|max:360',
+            'pitch' => 'required|min:-360|max:360',
             'text' => 'required'
         ]);
         
@@ -49,8 +49,8 @@ class HotspotController extends Controller
             'sourceScene' => 'required',
             'targetScene' => 'required',
             'type' => 'required',
-            'yaw' => ['required', 'between:-360,360'],
-            'pitch' => ['required', 'between:-360,360'],
+            'yaw' => 'required|min:-360|max:360',
+            'pitch' => 'required|min:-360|max:360',
             'text' => 'required'
         ]);
 

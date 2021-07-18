@@ -53,9 +53,9 @@ class SceneController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'type' => 'required',
-            'hfov' => ['required', 'between:-360,360'],
-            'yaw' => ['required', 'between:-360,360'],
-            'pitch' => ['required', 'between:-360,360'],
+            'hfov' => 'required|min:-360|max:360',
+            'yaw' => 'required|min:-360|max:360',
+            'pitch' => 'required|min:-360|max:360',
             'image' => 'required|image'
         ]);
 
@@ -94,9 +94,9 @@ class SceneController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'type' => 'required',
-            'hfov' => ['required', 'between:-360,360'],
-            'yaw' => ['required', 'between:-360,360'],
-            'pitch' => ['required', 'between:-360,360'],
+            'hfov' => 'required|min:-360|max:360',
+            'yaw' => 'required|min:-360|max:360',
+            'pitch' => 'required|min:-360|max:360',
             'image' => 'required|image'
         ]);
 

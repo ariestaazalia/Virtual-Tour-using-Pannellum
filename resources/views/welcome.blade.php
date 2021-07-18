@@ -29,7 +29,10 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
+        <!-- Jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <!-- Fading Out Overlay -->
         <script>
             $(document).ready(function(){
             $("#hide").click(function(){
@@ -124,12 +127,16 @@
                 }, @endforeach
             }
         });
-    </script> 
 
-    <script>
         function loadScene(clicked_id){
             load.loadScene(clicked_id);
         }
+    </script> 
+    
+    <script>
+        $("#menu-nav-wrap > ul > li > a").on('click', function(){
+            $(".close-button").click();
+        });
     </script>
   </body>
 </html>

@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" type="image/png" href="{{asset('img/UnsoedIcon.png')}}">
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <!-- FontAwesome Icons CSS -->
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+    <!-- Themify Icons CSS -->
     <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
-    <!-- others css -->
+    <!-- Font Styling -->
     <link rel="stylesheet" href="{{asset('css/typography.css')}}">
+    <!-- Loader -->
     <link rel="stylesheet" href="{{asset('css/default-css.css')}}">
+    <!-- Dashboard Styling -->
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
-    <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
-    <!-- Sorting -->
+    <!-- DataTable -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <!-- modernizr css -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Modernizr -->
     <script src="{{asset('js/modernizr-2.8.3.min.js')}}"></script>
 </head>
