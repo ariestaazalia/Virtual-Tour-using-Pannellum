@@ -111,7 +111,7 @@
                     "yaw": {{$scene->yaw}},
                     "type": "{{$scene->type}}",
                     "panorama": "{{asset('/img/uploads/' . $scene->image)}}",
-                    
+
                     "hotSpots": [@foreach ($hotspots->where('sourceScene', $scene->id) as $hotspot)
                         {
                             "pitch": "{{$hotspot->pitch}}",
@@ -124,10 +124,12 @@
                 }, @endforeach
             }
         });
+    </script> 
 
+    <script>
         function loadScene(clicked_id){
             load.loadScene(clicked_id);
         }
-    </script> 
+    </script>
   </body>
 </html>
