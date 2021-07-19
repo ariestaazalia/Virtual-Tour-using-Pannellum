@@ -865,6 +865,84 @@ header .header-logo  {
 /* ------------------------------------------------------------------- 
  * off-canvas menu - (_layout.scss) 
  * ------------------------------------------------------------------- */
+.sliderWrap {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  z-index: 700;
+} 
+
+.sliderWrap ul {
+  list-style: none;
+} 
+
+.sliderWrap ul li {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  background: #e59500;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+} 
+.sliderWrap ul li .fa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #fff;
+} 
+
+.sliderWrap ul li.info{
+  background: #000000a1;
+} 
+
+.sliderBar{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 51px;
+  width: 0px;
+  height: 40px;
+  background: #000000a1;
+  border-radius: 3px;
+  transition: all 0.5s 0.3s ease;
+}
+
+.sliderBar p {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  opacity: 0;
+  transition: all 0.6s ease;
+} 
+
+.sliderBar a {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  opacity: 0;
+  transition: all 0.6s ease;
+} 
+ul li:hover .sliderBar {
+  width: 180px;
+  transition: all 0.5s ease;
+} 
+
+ul li:hover .sliderBar p {
+  opacity: 1;
+  transition: all 1s 0.2s ease;
+}
+
 #menu-nav-wrap {
   background: #0c0c0c;
   color: rgb(3, 3, 3);
@@ -1035,6 +1113,10 @@ header .header-logo  {
   height: 100%;
   opacity: .2;
   
+}
+
+#myModal{
+  z-index:1500;
 }
 
 .home-content-table {

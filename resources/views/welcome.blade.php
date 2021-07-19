@@ -22,15 +22,17 @@
         <link rel="stylesheet" href="{{asset('css/vendor.css')}}">  
         <link rel="stylesheet" href="{{asset('css/main.css')}}"> 
 
+        <!-- Jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+
         {{-- Script --}}
         <script src="{{asset('js/modernizr.js')}}"></script>
 
         {{-- Pannellum--}}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-
-        <!-- Jquery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
         <!-- Fading Out Overlay -->
         <script>
@@ -64,6 +66,32 @@
             </ul>		
         </nav> 
     </header> 
+
+    <div class="sliderWrap">
+        <ul>
+            <li class="info">
+                <i class="fa fa-info" aria-hidden="true"></i>
+                    <div class="sliderBar">
+                        <a onclick="showModal()">
+                            <p> Denah Kampus </p>
+                        </a>
+                    </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="modal fade" id="denahModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="{{asset('/img/DenahFT.jpg')}}">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- home--> 
     <div class="home-content-table">	
@@ -132,7 +160,13 @@
             load.loadScene(clicked_id);
         }
     </script> 
-    
+
+    <script> 
+    function showModal(){
+        $('#denahModal').modal('show');
+    };   
+    </script> 
+
     <script>
         $("#menu-nav-wrap > ul > li > a").on('click', function(){
             $(".close-button").click();
