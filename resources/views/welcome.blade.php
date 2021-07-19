@@ -70,7 +70,7 @@
     <div class="sliderWrap">
         <ul>
             <li class="info">
-                <i class="fa fa-info" aria-hidden="true"></i>
+                <i class="fa fa-map" aria-hidden="true"></i>
                     <div class="sliderBar">
                         <a onclick="showModal()">
                             <p> Denah Kampus </p>
