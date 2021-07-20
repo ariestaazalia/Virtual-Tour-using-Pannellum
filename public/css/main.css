@@ -527,163 +527,6 @@ input::-moz-focus-inner {
   padding: 0;
 }
 
-/**
- * skillbars - (_skillbars.scss)
- * -------------------------------------------------------------------
- */
-.skill-bars {
-  list-style: none;
-  margin: 6rem 0 3rem;
-}
-.skill-bars li {
-  height: .6rem;
-  background: #a1a1a1;
-  width: 100%;
-  margin-bottom: 6rem;
-  padding: 0;
-  position: relative;
-}
-.skill-bars li strong {
-  position: absolute;
-  left: 0;
-  top: -3rem;
-  font-family: "montserrat-bold", sans-serif;
-  color: #313131;
-  text-transform: uppercase;
-  letter-spacing: .2rem;
-  font-size: 1.5rem;
-  line-height: 2.4rem;
-}
-.skill-bars li .progress {
-  background: #313131;
-  position: relative;
-  height: 100%;
-}
-.skill-bars li .progress span {
-  position: absolute;
-  right: 0;
-  top: -3.6rem;
-  display: block;
-  font-family: "montserrat-regular", sans-serif;
-  color: white;
-  font-size: 1.1rem;
-  line-height: 1;
-  background: #313131;
-  padding: .6rem .6rem;
-  border-radius: 3px;
-}
-.skill-bars li .progress span::after {
-  position: absolute;
-  left: 50%;
-  bottom: -5px;
-  margin-left: -5px;
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-  border-top: 5px solid #313131;
-  content: "";
-}
-.skill-bars li .percent5 {
-  width: 5%;
-}
-.skill-bars li .percent10 {
-  width: 10%;
-}
-.skill-bars li .percent15 {
-  width: 15%;
-}
-.skill-bars li .percent20 {
-  width: 20%;
-}
-.skill-bars li .percent25 {
-  width: 25%;
-}
-.skill-bars li .percent30 {
-  width: 30%;
-}
-.skill-bars li .percent35 {
-  width: 35%;
-}
-.skill-bars li .percent40 {
-  width: 40%;
-}
-.skill-bars li .percent45 {
-  width: 45%;
-}
-.skill-bars li .percent50 {
-  width: 50%;
-}
-.skill-bars li .percent55 {
-  width: 55%;
-}
-.skill-bars li .percent60 {
-  width: 60%;
-}
-.skill-bars li .percent65 {
-  width: 65%;
-}
-.skill-bars li .percent70 {
-  width: 70%;
-}
-.skill-bars li .percent75 {
-  width: 75%;
-}
-.skill-bars li .percent80 {
-  width: 80%;
-}
-.skill-bars li .percent85 {
-  width: 85%;
-}
-.skill-bars li .percent90 {
-  width: 90%;
-}
-.skill-bars li .percent95 {
-  width: 95%;
-}
-.skill-bars li .percent100 {
-  width: 100%;
-}
-
-/* ===================================================================
- *  08. common and reusable styles 
- *
- * ------------------------------------------------------------------- */
-.section-intro {
-  text-align: center;
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-.section-intro h1 {
-  font-family: "librebaskerville-bold", serif;
-  font-size: 4.8rem;
-  line-height: 1.375;
-  color: #151515;
-}
-.section-intro h3 {
-  font-family: "montserrat-bold", sans-serif;
-  font-size: 1.8 rem;
-  line-height: 1.667;
-  color: rgba(242, 242, 242, 0.5);
-  text-transform: uppercase;
-  letter-spacing: .3rem;
-  margin-bottom: 1.2rem;
-}
-.section-intro .lead {
-  font-family: "montserrat-regular", sans-serif;
-  font-size: 1.8;
-  line-height: 1.833;
-}
-.section-intro.with-bottom-sep {
-  padding-bottom: 4.2rem;
-  position: relative;
-}
-.section-intro.with-bottom-sep::after {
-  display: inline-block;
-  height: 1px;
-  width: 200px;
-  background-color: rgba(242, 242, 242, 0.1);
-  text-align: center;
-}
-
 /* ------------------------------------------------------------------- 
  * responsive:
  * section-intro
@@ -794,7 +637,7 @@ header .header-logo  {
 /* ------------------------------------------------------------------- 
  * menu trigger - (_layout.css) 
  * ------------------------------------------------------------------- */
-#header-menu-trigger {
+ #header-menu-trigger {
   display: block;
   position: fixed;
   right: 32px;
@@ -802,25 +645,21 @@ header .header-logo  {
   height: 42px;
   width: 42px;
   line-height: 42px;
-  font-family: "montserrat-regular", sans-serif;
-  font-size: 1.4rem;
+  font-family: "montserrat-bold", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: .2rem;
-  color: rgb(0, 0, 0);
+  color: #000000;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-#header-menu-trigger.opaque {
-  background-color: #000000;
-}
-#header-menu-trigger.opaque .header-menu-text {
-  background-color: #000000;
-}
-#header-menu-trigger:hover, #header-menu-trigger:focus {
-  color: #FFFFFF;
+.header-menu-text:hover,  .header-menu-icon:focus {
+  background-color: #868686a4;
+  border-radius: 10px;
 }
 #header-menu-trigger .header-menu-text {
   display: block;
@@ -829,7 +668,6 @@ header .header-logo  {
   left: -75px;
   width: 75px;
   text-align: center;
-  background-color: transparent;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -862,13 +700,15 @@ header .header-logo  {
   bottom: -9px;
 }
 
+
+
 /* ------------------------------------------------------------------- 
  * off-canvas menu - (_layout.scss) 
  * ------------------------------------------------------------------- */
 .sliderWrap {
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 20px;
   transform: translate(-50%, -50%);
   z-index: 700;
 } 
@@ -878,10 +718,9 @@ header .header-logo  {
 } 
 
 .sliderWrap ul li {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   position: relative;
-  background: #e59500;
   margin: 10px 0;
   cursor: pointer;
   border-radius: 3px;
@@ -901,38 +740,30 @@ header .header-logo  {
 } 
 
 .sliderBar{
-  content: "";
   position: absolute;
   top: 0;
   left: 51px;
-  width: 0px;
-  height: 40px;
+  width: 0;
+  height: 35px;
   background: #000000a1;
   border-radius: 3px;
   transition: all 0.5s 0.3s ease;
 }
 
 .sliderBar p {
+  font-family: "montserrat-bold", sans-serif;
   text-transform: uppercase;
+  font-weight: bold;
+  display: block;
   font-size: 16px;
   font-weight: 900;
   color: #fff;
   text-align: center;
-  line-height: 50px;
+  line-height: 35px;
   opacity: 0;
   transition: all 0.6s ease;
 } 
 
-.sliderBar a {
-  text-transform: uppercase;
-  font-size: 16px;
-  font-weight: 900;
-  color: #fff;
-  text-align: center;
-  line-height: 50px;
-  opacity: 0;
-  transition: all 0.6s ease;
-} 
 ul li:hover .sliderBar {
   width: 180px;
   transition: all 0.5s ease;
@@ -1101,10 +932,10 @@ ul li:hover .sliderBar p {
 #pannellum {
   width: 100%;
   height: 100%;
-  
   min-height: 804px;
   position: relative;
 }
+
 #pannellum .overlay {
   position: absolute;
   top: 0;
@@ -1112,11 +943,6 @@ ul li:hover .sliderBar p {
   width: 100%;
   height: 100%;
   opacity: .2;
-  
-}
-
-#myModal{
-  z-index:1500;
 }
 
 .home-content-table {
@@ -1157,78 +983,9 @@ ul li:hover .sliderBar p {
   color: #f9a828;
 }
 
-/* home social-list */
-.home-social-list {
-  position: absolute;
-  left: 48px;
-  bottom: 54px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: 2.4rem;
-  line-height: 1.75;
-  text-align: center;
-}
-.home-social-list::before {
-  display: block;
-  content: "";
-  width: 2px;
-  height: 42px;
-  background-color: rgba(255, 255, 255, 0.3);
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 12px;
-}
-.home-social-list li {
-  padding-left: 0;
-}
-.home-social-list li a, .home-social-list li a:visited {
-  color: #FFFFFF;
-}
-.home-social-list li a:hover, 
-.home-social-list li a:focus, 
-.home-social-list li a:active {
-  color: #151515;
-}
-
-/* scroll down */
-.scrolldown {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  -webkit-transform-origin: right top 0;
-  -ms-transform-origin: right top 0;
-  transform-origin: right top 0;
-  float: right;
-}
-.scrolldown i {
-  padding-left: 9px;
-}
-.scrolldown a:hover, .scrolldown a:focus, .scrolldown a:active {
-  color: #151515 !important;
-}
-
 html[data-useragent*='MSIE 10.0'] .scrolldown,
 .oldie .scrolldown {
   display: none;
-}
-
-.scroll-icon {
-  display: inline-block;
-  font-family: "montserrat-bold", sans-serif;
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  letter-spacing: .3rem;
-  color: #FFFFFF !important;
-  background: transparent;
-  position: relative;
-  top: 36px;
-  right: 42px;
-  -webkit-animation: animate-it 3s ease infinite;
-  animation: animate-it 3s ease infinite;
 }
 
 /* vertical animation */
@@ -1415,7 +1172,6 @@ footer h4.h05::after {
     margin-left: -50px;
   }
 }
-
 
 /* VTour */
 #pannellum {
