@@ -22,6 +22,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'UserController@index')->name('profil');
     Route::get('/ubahPassword', 'PasswordController@index')->name('ubahPassword');
 
+    Route::get('/dataScene', 'SceneController@dataScene')->name('dataScene');
+    Route::get('/dataHotspot', 'SceneController@dataHotspot')->name('dataHotspot');
+
     Route::post('/changePassword', 'PasswordController@store')->name('changePassword');
     Route::post('/addScene', 'SceneController@store')->name('addScene');
     Route::post('/addHotspot', 'HotspotController@store')->name('addHotspot');
@@ -32,7 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/editScene/{id}', 'SceneController@update')->name('editScene');
     Route::put('/editHotspot/{id}', 'HotspotController@update')->name('editHotspot');
     Route::put('/editprofile/{id}', 'UserController@update')->name('editProfil');
-    Route::put('/setFScene/{id}', 'SceneController@status');
+    Route::put('/setFScene/{id}', 'SceneController@status')->name('changeFScene');
 
     Route::delete('/delUser/{id}', 'UserController@destroy')->name('delProfil');
     Route::delete('/delScene/{id}', 'SceneController@destroy')->name('delScene');

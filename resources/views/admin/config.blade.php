@@ -28,539 +28,16 @@
                     </div>
                 </div>
                 
-                <!-- Scene Tab -->
                 <div class="trad-history mt-4" >
                     <div class="tab-content" id="myTabContent" >
+                        <!-- Scene Tab -->
                         <div class="tab-pane fade show active" id="scene" role="tabpanel">
-                            <div class="d-flex justify-content-end">
-                                <!-- Add Scene -->
-                                <button type="button" class="btn btn-rounded btn-outline-info mb-3" data-toggle="modal" data-target="#addScene">Tambah Scene</button>
-                                <div class="modal fade" id="addScene">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Tambah Scene</h5>
-                                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{ route('addScene') }}" method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                    @if ($errors->any())
-                                                        @foreach ($errors->all() as $error)
-                                                        <div class="alert-dismiss">
-                                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                                <strong>{{ $error }}</strong>
-                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                    <span class="fa fa-times"></span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        @endforeach
-                                                    @endif
-
-                                                    <div class="form-group">
-                                                        <label for="title">Judul Scene</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="text" name="title" required>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="hidden" name="type" value="equirectangular">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="hfov">Hfov</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="hfov" min="-360" max="360" value="100" required>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="yaw">Yaw</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="yaw" min="-360" max="360" value="0" required>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="pitch">Pitch</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="pitch" min="-360" max="360" value="0" required>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="image">Gambar</label>
-                                                        <img class="card-img-top img-fluid" id="image-preview" alt="Image Preview"/>
-                                                        <div class="custom-file">
-                                                            <input type="file" class="form-control-file" id="image-upload" name="image" required onchange="previewImage()" accept="image/*">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                                                        <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Data Scene -->
-                            <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center configTable">
-                                    <thead class="text-uppercase">
-                                        <tr>
-                                            <th scope="col">No.</th>
-                                            <th scope="col">Nama</th>
-                                            <th scope="col" data-sort-method='none'>Gambar</th>
-                                            <th scope="col" data-sort-method='none'>Scene Utama</th>
-                                            <th scope="col" data-sort-method='none'>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $num= 1;
-                                        @endphp
-                                        @foreach($scene as $item)
-                                            <tr>
-                                                <th scope="row">{{$num++}}</th>
-                                                <td>{{$item->title}}</td>
-                                                <td><img style="height: 70px" src="{{asset('/img/uploads/' . $item->image)}}"></td>
-                                                <td> 
-                                                    <form method="post" id="status{{$item['id']}}" action=" {{ url('/setFScene/' . $item->id) }} ">
-                                                        @csrf 
-                                                        @method('PUT')
-
-                                                        @if ($item->status !=0)
-                                                            <input type="checkbox" id="{{$item->id}}" name="check" checked value="1" />
-                                                        @else
-                                                            <input type="checkbox" id="{{$item->id}}" name="check" value="1" />
-                                                        @endif
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    <ul class="d-flex justify-content-center">
-                                                        <!-- Detail -->
-                                                        <li class="mr-3"><a href="#" class="text-info" data-toggle="modal" data-target="#detailScene{{$item['id']}}" ><i class="fa fa-eye"></i></a></li>
-                                                        <!-- Detail Modal -->
-                                                        <div class="modal fade" id="detailScene{{$item['id']}}">
-                                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title">{{$item->title}}</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <img class="card-img-top img-fluid" src="{{asset('/img/uploads/' . $item->image)}}">
-                                                                        <br> <br> <hr>
-                                                                        <h5>Info {{$item->title}}</h5><br>
-
-                                                                        <p class="d-flex justify-content-left"><b> Tipe: </b> {{ $item->type}} </p><br>
-
-                                                                        <p class="d-flex justify-content-left"> 
-                                                                            <b> Hfov: </b> {{$item->hfov}} 
-                                                                        </p><br>
-
-                                                                        <p class="d-flex justify-content-left"> 
-                                                                            <b> Yaw: </b> {{$item->yaw}}
-                                                                        </p><br>
-
-                                                                        <p class="d-flex justify-content-left"> 
-                                                                            <b> Pitch: </b> {{$item->pitch}} 
-                                                                        </p><br>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Edit -->
-                                                        <li class="mr-3"><a href="#" class="text-success" data-toggle="modal" data-target="#editModal{{$item['id']}}"><i class="fa fa-edit"></i></a></li>
-                                                        <!-- Edit Modal -->
-                                                        <div class="modal fade" id="editModal{{$item['id']}}">
-                                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title">Ubah {{$item->title}}</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form action="{{ route('editScene', ['id' => $item->id]) }}" method="POST" enctype="multipart/form-data"> 
-                                                                            @csrf
-                                                                            @method('PUT')
-
-                                                                            @if ($errors->any())
-                                                                                @foreach ($errors->all() as $error)
-                                                                                <div class="alert-dismiss">
-                                                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                                                        <strong>{{ $error }}</strong>
-                                                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                                            <span class="fa fa-times"></span>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
-                                                                                @endforeach
-                                                                            @endif
-
-                                                                            <div class="form-group">
-                                                                                <label for="title" class="d-flex justify-content-left">Judul Scene</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="text" name="title" required value="{{$item->title}}">
-                                                                            </div>
-                        
-                                                                            <div class="form-group">
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="hidden" name="type" value="{{$item->type}}">
-                                                                            </div>
-                        
-                                                                            <div class="form-group">
-                                                                                <label for="hfov" class=" d-flex justify-content-left">Hfov</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="hfov" min="-360" max="360" value="{{$item->hfov}}" required>
-                                                                            </div>
-                        
-                                                                            <div class="form-group">
-                                                                                <label for="yaw" class=" d-flex justify-content-left">Yaw</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="yaw" min="-360" max="360" value="{{$item->yaw}}" required>
-                                                                            </div>
-                        
-                                                                            <div class="form-group">
-                                                                                <label for="pitch" class=" d-flex justify-content-left">Pitch</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" type="number" step="0.1" name="pitch" min="-360" max="360" value="{{$item->pitch}}" required>
-                                                                            </div>
-                        
-                                                                            <div class="form-group">
-                                                                                <label for="image" class=" d-flex justify-content-left">Image</label>
-                                                                                <div class="custom-file">
-                                                                                    <input type="file" class="form-control-file" name="image" accept="image/*">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                                                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Delete -->
-                                                        <li><a href="#" class="text-danger" data-toggle="modal" data-target="#deleteModal{{$item['id']}}"><i class="ti-trash"></i></a></li>
-
-                                                        {{-- Delete Scene Modal --}}
-                                                        <div id="deleteModal{{$item['id']}}" class="modal fade">
-                                                            <div class="modal-dialog modal-dialog-centered modal-confirm">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header flex-column">
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                        <div class="icon-box">
-                                                                            <i class="fa fa-times-circle"></i>
-                                                                        </div>	
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <p>Apakah Anda Yakin Ingin Menghapus Data Ini? </p>
-                                                                        <form method="POST" action="{{ route('delScene', ['id' => $item->id]) }}">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            
-                                                                            <div class="modal-footer justify-content-center">
-                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                                                <button type="submit" class="btn btn-danger">Hapus</button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                            @include('admin.dataScene')
                         </div>
 
+                        <!-- Hotspot Tab -->
                         <div class="tab-pane fade" id="hotspot" role="tabpanel">
-                            <div class="d-flex justify-content-end">
-                                <!-- Add Hotspot -->
-                                <button type="button" class="btn btn-rounded btn-outline-info mb-3" data-toggle="modal" data-target="#addHotspot">Tambah Hotspot</button>
-                                <div class="modal fade" id="addHotspot">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Tambah Hotspot</h5>
-                                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <form action="{{ route('addHotspot') }}" method="POST" enctype="multipart/form-data">
-                                                    @csrf
-
-                                                    @if ($errors->any())
-                                                        @foreach ($errors->all() as $error)
-                                                        <div class="alert-dismiss">
-                                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                                <strong>{{ $error }}</strong>
-                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                    <span class="fa fa-times"></span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        @endforeach
-                                                    @endif
-
-                                                    <div class="form-group">
-                                                        <label for="sourceScene">Asal Scene</label>
-                                                        <select class="form-control form-control-lg input-rounded mb-4" name="sourceScene" required>
-                                                            <option value="" disabled selected>Pilih Salah Satu </option>
-                                                            @foreach ($scene as $item)
-                                                                <option value="{{$item->id}}">
-                                                                    {{$item->title}}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="scene">Target Scene</label>
-                                                        <select class="form-control form-control-lg input-rounded mb-4" name="targetScene" required>
-                                                            <option value="" disabled selected>Pilih Salah Satu </option>
-                                                            @foreach ($scene as $item)
-                                                                <option value="{{$item->id}}">
-                                                                    {{$item->title}}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                    
-                                                    <div class="form-group">
-                                                        <label for="type">Tipe</label>
-                                                        <select class="form-control form-control-lg input-rounded mb-4" name="type" required>
-                                                            <option value="" disabled selected>Choose One </option>
-                                                            <option value="info">Info</option>
-                                                            <option value="scene">Penghubung</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="yaw">Yaw</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" name="yaw" min="-360" max="360" value="0">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="pitch">Pitch</label>
-                                                        <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" name="pitch" min="-360" max="360" value="0">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="text">Informasi</label>
-                                                        <textarea class="form-control form-control-lg input-rounded mb-4" required type="text" name="text"></textarea>
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                                                        <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Data Hotspot -->
-                            <div class="table-responsive">
-                                <table class="table table-hover progress-table text-center configTable">
-                                    <thead class="text-uppercase">
-                                        <tr>
-                                            <th scope="col">No.</th>
-                                            <th scope="col">Asal Scene</th>
-                                            <th scope="col">Target Scene</th>
-                                            <th scope="col">Tipe</th>
-                                            <th scope="col">Info</th>
-                                            <th scope="col" data-sort-method='none'>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                            $num= 1;
-                                        @endphp
-                                        @foreach ($hotspots as $hotspot)
-                                            <tr>
-                                                <th scope="row">{{$num++}}</th>
-                                                @foreach ($scene as $scenes)
-                                                    @if ($hotspot->sourceScene == $scenes->id)
-                                                        <td>{{$scenes->title}}</td>
-                                                    @endif
-                                                @endforeach
-
-                                                @foreach ($scene as $scenes)
-                                                    @if ($hotspot->targetScene == $scenes->id)
-                                                        <td>{{$scenes->title}}</td>
-                                                    @endif
-                                                @endforeach
-
-                                                <td>{{$hotspot->type}}</td>
-                                                <td>{{$hotspot->info}}</td>
-                                                <td>
-                                                    <ul class="d-flex justify-content-center">
-                                                        <!-- Detail -->
-                                                        <li class="mr-3"><a href="#" class="text-info" data-toggle="modal" data-target="#detailHotspot{{$hotspot['id']}}" ><i class="fa fa-eye"></i></a></li>
-                                                        <!-- Detail Modal -->
-                                                        <div class="modal fade" id="detailHotspot{{$hotspot['id']}}">
-                                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title">{{$hotspot->title}}</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <h5>Info Hotspot</h5><br>
-
-                                                                        <p class="d-flex justify-content-left">
-                                                                            <b>Tipe: </b> {{ $hotspot->type}} 
-                                                                        </p><br>
-
-                                                                        <p class="d-flex justify-content-left"> 
-                                                                            <b> Yaw: </b> {{$hotspot->yaw}}
-                                                                        </p><br>
-
-                                                                        <p class="d-flex justify-content-left"> 
-                                                                            <b> Pitch: </b> {{$hotspot->pitch}} 
-                                                                        </p><br>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-    
-                                                        <!-- Edit -->
-                                                        <li class="mr-3"><a href="#" class="text-success" data-toggle="modal" data-target="#editHotspot{{$hotspot['id']}}"><i class="fa fa-edit"></i></a></li>
-                                                        <!-- Edit Modal -->
-                                                        <div class="modal fade" id="editHotspot{{$hotspot['id']}}">
-                                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"> Ubah Hotspot </h5>
-                                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form method="POST" action="{{ route('editHotspot', ['id' => $hotspot->id]) }}"> 
-                                                                            @csrf
-                                                                            @method('PUT')
-
-                                                                            @if ($errors->any())
-                                                                                @foreach ($errors->all() as $error)
-                                                                                <div class="alert-dismiss">
-                                                                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                                                        <strong>{{ $error }}</strong>
-                                                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                                            <span class="fa fa-times"></span>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
-                                                                                @endforeach
-                                                                            @endif
-                                                                            
-                                                                            <div class="form-group">
-                                                                                <label for="sourceScene" class="d-flex justify-content-left">Asal Scene</label>
-                                                                                <select class="form-control form-control-lg input-rounded mb-4" name="sourceScene" required>
-                                                                                    <option value="" disabled>Pilih Salah Satu </option>
-                                                                                    @foreach ($scene as $scenes)
-                                                                                        @if ($hotspot->sourceScene == $scenes->id)
-                                                                                            <option value="{{$hotspot->sourceScene}}" selected> {{$scenes->title}}</option>
-                                                                                        @else
-                                                                                            <option value="{{$scenes->id}}"> {{$scenes->title}}</option>
-                                                                                        @endif
-                                                                                    @endforeach
-                                                                                </select>
-                                                                            </div>
-
-                                                                            <div class="form-group">
-                                                                                <label for="scene" class="d-flex justify-content-left">Target Scene</label>
-                                                                                <select class="form-control form-control-lg input-rounded mb-4" name="targetScene" required>
-                                                                                    <option value="" disabled>Pilih Salah Satu </option>
-                                                                                    @foreach ($scene as $scenes)
-                                                                                        @if ($hotspot->targetScene == $scenes->id)
-                                                                                            <option value="{{$hotspot->targetScene}}" selected> {{$scenes->title}}</option>
-                                                                                        @else
-                                                                                            <option value="{{$scenes->id}}"> {{$scenes->title}}</option>
-                                                                                        @endif
-                                                                                    @endforeach
-                                                                                </select>
-                                                                            </div>
-                                                                            
-                                                                            <div class="form-group">
-                                                                                <label for="type" class="d-flex justify-content-left">Tipe</label>
-                                                                                <select class="form-control form-control-lg input-rounded mb-4" name="type" required>
-                                                                                    <option value="" disabled>Pilih Salah Satu </option>
-                                                                                    <option value="info" @if ($hotspot->type == "info") {{ 'selected' }} @endif>Info</option>
-						                                                            <option value="scene" @if ($hotspot->type == "scene") {{ 'selected' }} @endif>Penghubung</option>
-                                                                                </select>
-                                                                            </div>
-                        
-                                                                            <div class="form-group">
-                                                                                <label for="yaw" class="d-flex justify-content-left">Yaw</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" name="yaw" min="-360" max="360" value="{{$hotspot->yaw}}">
-                                                                            </div>
-                        
-                                                                            <div class="form-group">
-                                                                                <label for="pitch" class="d-flex justify-content-left">Pitch</label>
-                                                                                <input class="form-control form-control-lg input-rounded mb-4" required type="number" step="0.1" name="pitch" min="-360" max="360" value="{{$hotspot->pitch}}">
-                                                                            </div>
-                        
-                                                                            <div class="form-group">
-                                                                                <label for="text" class="d-flex justify-content-left">Text</label>
-                                                                                <textarea class="form-control form-control-lg input-rounded mb-4" name="text" required > {{$hotspot->info}} </textarea>
-                                                                            </div>
-                                                                            
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                                                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-    
-                                                        <!-- Delete -->
-                                                        <li><a href="#" class="text-danger" data-toggle="modal" data-target="#deleteModal2{{$hotspot['id']}}"><i class="ti-trash"></i></a></li>
-
-                                                        {{-- Delete Hotspot Modal --}}
-                                                        <div id="deleteModal2{{$hotspot['id']}}" class="modal fade">
-                                                            <div class="modal-dialog modal-dialog-centered modal-confirm">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header flex-column">
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                        <div class="icon-box">
-                                                                            <i class="fa fa-times-circle"></i>
-                                                                        </div>							
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <p>Apakah Anda Yakin Ingin Menghapus Data Ini? </p>
-                                                                        <form method="POST" action="{{ route('delHotspot', ['id' => $hotspot->id]) }}">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            
-                                                                            <div class="modal-footer justify-content-center">
-                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                                                <button type="submit" class="btn btn-danger">Hapus</button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                            @include('admin.dataHotspot')
                         </div>
                     </div>
                 </div>
@@ -586,21 +63,89 @@
         $(document).ready(function() {
             $('.configTable').DataTable({
                 pageLength : 5,
-                lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Semua']],
-                "language": {
-                    "lengthMenu": "Menampilkan _MENU_ Data Per Halaman",
-                    "zeroRecords": "Data Tidak Ditemukan",
-                    "info": "Menampilkan Halaman _PAGE_ dari _PAGES_",
-                    "infoEmpty": "Data Tidak Ditemukan",
-                    "infoFiltered": "(Difilter dari _MAX_ total data)",
-                    "search": "Cari:",
-                    "paginate": {
-                        "next":       "Selanjutnya",
-                        "previous":   "Sebelumnya"
-                    }
-                }
+                lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Semua']]
             });
         } );
+    </script>
+
+    <script>
+        (function ($, DataTable) {
+            $.extend(true, DataTable.defaults, {
+                pageLength : 5,
+                lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Semua']],
+                language: {
+                    url : '//cdn.datatables.net/plug-ins/1.10.10/i18n/Indonesian.json'
+                }
+            });
+        })(jQuery, jQuery.fn.dataTable);
+    </script>
+
+    <script>
+        $(document).ready(function()  {
+            var table = $('.sceneTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('dataScene') }}",
+                columns: [
+                    {data: 'id'},
+                    {data: 'title'},
+                    {data: 'image',
+                        "render": function(data, type, full, meta){
+                            return "<img style='height:70px;' src= 'img/uploads/" + data + "' />";
+                        },
+                        orderable: false,
+                        searchable: false
+                    },
+                    {data: 'status', 
+                        name: 'status',
+                        render: function ( data, type, row ) {
+                            if ( type === 'display' ) {
+                                return '<input type="checkbox" name="check">';
+                            }
+                            return data;
+                        },
+                        orderable: false,
+                        searchable: false
+                    },
+                    {data: 'action', 
+                        name: 'action',
+                        orderable: false, 
+                        searchable: false
+                    }
+                ]
+            });
+        });
+
+        $('.sceneTable').on( 'change', 'input.editor-status', function () {
+            editor
+                .edit( $(this).closest('tr'), false, {
+                        submit: 'changed'
+                    } )
+                .set( 'active', $(this).prop( 'checked' ) ? 1 : 0 )
+                .submit();
+        });
+    </script>
+
+    <script>
+        $(function () {
+            var table = $('.hotspotTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('dataHotspot') }}",
+                columns: [
+                    {data: 'id', name: 'hotspots.id'},
+                    {data: 'sourceSceneName', name: 'sc1.title'},
+                    {data: 'targetSceneName', name: 'sc2.title'},
+                    {data: 'type', name: 'hotspots.type'},
+                    {data: 'info', name: 'hotspots.info'},
+                    {data: 'action', 
+                        name: 'action',
+                        orderable: false, 
+                        searchable: false
+                    }
+                ]
+            });
+        });
     </script>
 
     <script type="text/javascript">
@@ -620,7 +165,7 @@
 
     <script type="text/javascript">
         @if (count($errors) > 0)
-            document.querySelectorAll('#addScene', '#addHotspot', '#editModal{{$item['id']}}', '#editHotspot{{$hotspot['id']}}').modal('show');
+            document.querySelectorAll('#addScene', '#addHotspot').modal('show');
         @endif
     </script>
 @endpush

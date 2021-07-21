@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="{{asset('css/base.css')}}">
         <link rel="stylesheet" href="{{asset('css/vendor.css')}}">  
         <link rel="stylesheet" href="{{asset('css/main.css')}}"> 
-
+        
         <!-- Jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- Bootstrap -->
@@ -33,13 +33,13 @@
         {{-- Pannellum--}}
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-
+        
         <!-- Fading Out Overlay -->
         <script>
             $(document).ready(function(){
-            $("#hide").click(function(){
-                $(".home-content-table").fadeOut(1000);
-            });
+                $("#hide").click(function(){
+                    $(".home-content-table").fadeOut(1000);
+                });
             });
         </script>
     </head>
@@ -66,7 +66,7 @@
             </ul>		
         </nav> 
     </header> 
-
+    
     <div class="sliderWrap">
         <ul>
             <li class="info">
@@ -80,7 +80,7 @@
         </ul>
     </div>
     
-    <div class="modal fade" id="denahModal" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="denahModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -162,13 +162,13 @@
             load.loadScene(clicked_id);
         }
     </script> 
-
+    
     <script> 
-    function showModal(){
-        $('#denahModal').modal('show');
-    };   
+        function showModal(){
+            $('#denahModal').modal('show');
+        };   
     </script> 
-
+    
     <script>
         $("#menu-nav-wrap > ul > li > a").on('click', function(){
             $(".close-button").click();

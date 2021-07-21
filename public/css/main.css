@@ -1180,3 +1180,8 @@ footer h4.h05::after {
   min-height: 804px;
   position: relative;
 }
+
+.pnlm-load-box {
+  z-index:-999;
+  opacity: 0;
+}

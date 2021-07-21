@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Scene;
 use App\Hotspot;
+use Datatables;
 
 class SceneController extends Controller
 {
@@ -29,6 +30,42 @@ class SceneController extends Controller
             ->get();
         
         return view('admin.config', compact('hotspots', 'scene', 'sourceScene', 'targetScene'));
+    }
+
+    public function dataScene(Request $request){
+        if ($request->ajax()) {
+            $data = Scene::select('*');
+            return Datatables::of($data)
+                ->addColumn('action', function ($row) {
+                    return '<a href="#" class="text-success" data-toggle="modal" 
+                        data-target="#detailScene'. $row->id.'"><i class="fa fa-eye"></i></a>
+                            <a href="#" class="text-info" data-toggle="modal" 
+                        data-target="#editModal' . $row->id . '"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="text-danger" data-toggle="modal" 
+                        data-target="#deleteModal'. $row->id .'"><i class="ti-trash"></i></a>';
+                    })
+                ->make(true);
+        }
+    }
+
+    public function dataHotspot(){
+        $hotspots = DB::table('hotspots')->join('scenes as sc1', 'hotspots.sourceScene', '=', 'sc1.id')
+                        ->join('scenes as sc2', 'hotspots.targetScene', '=', 'sc2.id')
+                        -> select('sc1.title as sourceSceneName', 'sc2.title as targetSceneName', 'hotspots.*');
+
+        return Datatables::of($hotspots)
+            ->addColumn('status', function ($row){
+                return '<input type="checkbox" id="'. $row->id.'" name="check" value="1" />';
+            })
+            ->addColumn('action', function ($row) {
+                return '<a href="#" class="text-success" data-toggle="modal" 
+                    data-target="#detailHotspot'. $row->id.'"><i class="fa fa-eye"></i></a>
+                        <a href="#" class="text-info" data-toggle="modal" 
+                    data-target="#editHotspot' . $row->id . '"><i class="fa fa-edit"></i></a>
+                        <a href="#" class="text-danger" data-toggle="modal" 
+                    data-target="#deleteModal2'. $row->id .'"><i class="ti-trash"></i></a>';
+                })
+            ->make(true);
     }
 
     public function pannellum() {
