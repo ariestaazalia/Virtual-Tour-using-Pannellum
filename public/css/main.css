@@ -830,10 +830,14 @@ ul li:hover .sliderBar p {
   display: block;
 }
 #menu-nav-wrap .nav-list li a:hover, 
-#menu-nav-wrap .nav-list li a:focus {
+#menu-nav-wrap .nav-list li a:focus,
+#menu-nav-wrap .nav-list li a:active 
+{
   color: white;
   cursor: pointer;
+  font-weight: bold;
 }
+
 #menu-nav-wrap .header-social-list {
   list-style: none;
   display: inline-block;

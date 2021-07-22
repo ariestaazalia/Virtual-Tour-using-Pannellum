@@ -230,7 +230,7 @@
                 </div>							
             </div>
             <div class="modal-body">
-                <p>Apakah Anda Yakin Ingin Menghapus Data Ini? </p>
+                <p class="text-center">Apakah Anda Yakin Ingin Menghapus Data Ini? </p>
                 <form method="POST" action="{{ route('delHotspot', ['id' => $hotspot->id]) }}">
                     @csrf
                     @method('DELETE')

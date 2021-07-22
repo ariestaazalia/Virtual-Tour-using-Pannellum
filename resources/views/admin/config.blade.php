@@ -60,15 +60,6 @@
     </script>
 
     <script>
-        $(document).ready(function() {
-            $('.configTable').DataTable({
-                pageLength : 5,
-                lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Semua']]
-            });
-        } );
-    </script>
-
-    <script>
         (function ($, DataTable) {
             $.extend(true, DataTable.defaults, {
                 pageLength : 5,
@@ -87,7 +78,13 @@
                 serverSide: true,
                 ajax: "{{ route('dataScene') }}",
                 columns: [
-                    {data: 'id'},
+                    {data: null,
+                        searchable: false,
+                        sortable: false,
+                        "render": function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    }, 
                     {data: 'title'},
                     {data: 'image',
                         "render": function(data, type, full, meta){
@@ -98,12 +95,6 @@
                     },
                     {data: 'status', 
                         name: 'status',
-                        render: function ( data, type, row ) {
-                            if ( type === 'display' ) {
-                                return '<input type="checkbox" name="check">';
-                            }
-                            return data;
-                        },
                         orderable: false,
                         searchable: false
                     },
@@ -112,45 +103,11 @@
                         orderable: false, 
                         searchable: false
                     }
-                ]
+                ],
+                'order': []
             });
-        });
 
-        $('.sceneTable').on( 'change', 'input.editor-status', function () {
-            editor
-                .edit( $(this).closest('tr'), false, {
-                        submit: 'changed'
-                    } )
-                .set( 'active', $(this).prop( 'checked' ) ? 1 : 0 )
-                .submit();
-        });
-    </script>
-
-    <script>
-        $(function () {
-            var table = $('.hotspotTable').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: "{{ route('dataHotspot') }}",
-                columns: [
-                    {data: 'id', name: 'hotspots.id'},
-                    {data: 'sourceSceneName', name: 'sc1.title'},
-                    {data: 'targetSceneName', name: 'sc2.title'},
-                    {data: 'type', name: 'hotspots.type'},
-                    {data: 'info', name: 'hotspots.info'},
-                    {data: 'action', 
-                        name: 'action',
-                        orderable: false, 
-                        searchable: false
-                    }
-                ]
-            });
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("input:checkbox").change(function(){
+            $('.sceneTable tbody').on('click', 'input:checkbox', function(){
                 var getId = $(this).attr("id");
                 if ($('input[type=checkbox]:checked').length > 1) {
                     $(this).prop('checked', false)
@@ -163,9 +120,31 @@
         });
     </script>
 
-    <script type="text/javascript">
-        @if (count($errors) > 0)
-            document.querySelectorAll('#addScene', '#addHotspot').modal('show');
-        @endif
+    <script>
+        $(document).ready(function() {
+            var hotspotTable = $('.hotspotTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('dataHotspot') }}",
+                columns: [
+                    {data: null,
+                        searchable: false,
+                        sortable: false,
+                        "render": function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }},
+                    {data: 'sourceSceneName', name: 'sc1.title'},
+                    {data: 'targetSceneName', name: 'sc2.title'},
+                    {data: 'type', name: 'hotspots.type'},
+                    {data: 'info', name: 'hotspots.info'},
+                    {data: 'action', 
+                        name: 'action',
+                        orderable: false, 
+                        searchable: false
+                    }
+                ],
+                'order': []
+            });
+        });
     </script>
 @endpush

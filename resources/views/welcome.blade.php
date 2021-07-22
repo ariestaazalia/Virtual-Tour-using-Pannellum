@@ -168,7 +168,7 @@
             $('#denahModal').modal('show');
         };   
     </script> 
-    
+
     <script>
         $("#menu-nav-wrap > ul > li > a").on('click', function(){
             $(".close-button").click();

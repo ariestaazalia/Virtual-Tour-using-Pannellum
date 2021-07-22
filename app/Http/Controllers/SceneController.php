@@ -19,23 +19,29 @@ class SceneController extends Controller
     {
         $scene = Scene::all();
         $hotspots = Hotspot::all();
-        $sourceScene = DB::table('hotspots')
-            ->join('scenes', 'scenes.id', '=', 'hotspots.sourceScene')
-            ->select('scenes.id', 'scenes.title', 'hotspots.*')
-            ->get();
-
-        $targetScene = DB::table('hotspots')
-            ->join('scenes', 'scenes.id', '=', 'hotspots.targetScene')
-            ->select('scenes.id', 'scenes.title', 'hotspots.targetScene')
-            ->get();
-        
-        return view('admin.config', compact('hotspots', 'scene', 'sourceScene', 'targetScene'));
+        return view('admin.config', compact('hotspots', 'scene'));
     }
 
     public function dataScene(Request $request){
         if ($request->ajax()) {
             $data = Scene::select('*');
             return Datatables::of($data)
+                ->addColumn('status', function ($row){
+                    $sendData = route('changeFScene', $row->id);
+                    $csrf = csrf_token();
+                    if ($row->status !=0)
+                        return '<form method="post" id="status'. $row->id.'" action='.$sendData.'>
+                                    <input name="_token" type="hidden" value='.$csrf.'>
+                                    <input name="_method" type="hidden" value="PUT">
+                                    <input type="checkbox" id="'. $row->id.'" name="check" checked value="1"/>
+                                </form>';
+                    else 
+                        return '<form method="post" id="status'. $row->id.'" action='.$sendData.'>
+                                    <input name="_token" type="hidden" value='.$csrf.'>
+                                    <input name="_method" type="hidden" value="PUT">            
+                                    <input type="checkbox" id="'. $row->id.'" name="check" value="1"/>
+                                </form>';
+                })
                 ->addColumn('action', function ($row) {
                     return '<a href="#" class="text-success" data-toggle="modal" 
                         data-target="#detailScene'. $row->id.'"><i class="fa fa-eye"></i></a>
@@ -43,7 +49,8 @@ class SceneController extends Controller
                         data-target="#editModal' . $row->id . '"><i class="fa fa-edit"></i></a>
                             <a href="#" class="text-danger" data-toggle="modal" 
                         data-target="#deleteModal'. $row->id .'"><i class="ti-trash"></i></a>';
-                    })
+                })
+                ->escapeColumns([])
                 ->make(true);
         }
     }
@@ -54,9 +61,6 @@ class SceneController extends Controller
                         -> select('sc1.title as sourceSceneName', 'sc2.title as targetSceneName', 'hotspots.*');
 
         return Datatables::of($hotspots)
-            ->addColumn('status', function ($row){
-                return '<input type="checkbox" id="'. $row->id.'" name="check" value="1" />';
-            })
             ->addColumn('action', function ($row) {
                 return '<a href="#" class="text-success" data-toggle="modal" 
                     data-target="#detailHotspot'. $row->id.'"><i class="fa fa-eye"></i></a>
@@ -134,7 +138,7 @@ class SceneController extends Controller
             'hfov' => 'required|min:-360|max:360',
             'yaw' => 'required|min:-360|max:360',
             'pitch' => 'required|min:-360|max:360',
-            'image' => 'required|image'
+            'image' => 'image'
         ]);
 
         $file = $request->file('image');
