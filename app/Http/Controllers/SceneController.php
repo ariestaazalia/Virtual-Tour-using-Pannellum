@@ -67,7 +67,7 @@ class SceneController extends Controller
                         <a href="#" class="text-info" data-toggle="modal" 
                     data-target="#editHotspot' . $row->id . '"><i class="fa fa-edit"></i></a>
                         <a href="#" class="text-danger" data-toggle="modal" 
-                    data-target="#deleteModal2'. $row->id .'"><i class="ti-trash"></i></a>';
+                    data-target="#deleteHotspot'. $row->id .'"><i class="ti-trash"></i></a>';
                 })
             ->make(true);
     }
