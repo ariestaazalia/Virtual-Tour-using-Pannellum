@@ -1,6 +1,6 @@
-# SuperTodoApp
+# Virtual Tour using Pannellum
 
-This is a simple app using laravel 8.0 with API and jQuery for Gamatechno test
+This is my thesis project
 
 ## Getting started
 
@@ -12,13 +12,10 @@ Assuming you've already installed on your machine: PHP (>= 7.3.0), [Composer](ht
 
 Clone the repository
 ```
-git clone https://gitlab.com/ariestaazalia/supertodoapp.git
+git clone https://gitlab.com/ariestaazalia/Virtual-Tour-using-Pannellum.git
 ```
 
 Switch to the folder
-```
-cd supertodoapp
-```
 
 Install all the dependencies using composer
 ```
@@ -37,8 +34,10 @@ php artisan key:generate
 
 Run the database migration (set the database connection in .env first)
 ```
-php artisan migrate --seed
+php artisan migrate 
 ```
+
+Import the Database
 
 Start local development server
 ```
