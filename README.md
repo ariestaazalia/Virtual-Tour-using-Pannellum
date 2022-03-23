@@ -47,8 +47,7 @@ You can access the app in http://localhost:8000 (Make sure you run your web serv
 
 ## TLDR
 ```
-git clone https://gitlab.com/ariestaazalia/supertodoapp.git
-cd supertodoapp
+git clone https://gitlab.com/ariestaazalia/Virtual-Tour-using-Pannellum.git
 composer install
 cp .env.example .env
 php artisan key:generate
