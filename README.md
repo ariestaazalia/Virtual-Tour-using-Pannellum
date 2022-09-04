@@ -34,7 +34,7 @@ php artisan key:generate
 
 Run the database migration (set the database connection in .env first)
 ```
-php artisan migrate 
+php artisan migrate --seed
 ```
 
 Import the Database
