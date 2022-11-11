@@ -1,6 +1,11 @@
 # Virtual Tour using Pannellum
 
-This is my thesis project
+This is my thesis project, created a virtual tour of my campus using [Pannellum](https://pannellum.org/) Package.
+
+# Preview
+
+![Preview1](public/img/preview.png)
+![Preview1](public/img/preview2.png)
 
 ## Getting started
 
